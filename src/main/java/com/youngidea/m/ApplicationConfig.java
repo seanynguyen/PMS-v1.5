@@ -55,6 +55,5 @@ public class ApplicationConfig extends Application {
         resources.add(com.youngidea.pms.api.rest.item.ItemGroupServiceREST.class);
         resources.add(com.youngidea.pms.api.rest.item.ItemServiceREST.class);
         resources.add(com.youngidea.pms.api.rest.item.ItemStatusServiceREST.class);
-        resources.add(org.glassfish.jersey.media.multipart.MultiPartFeature.class);
     }
 }
