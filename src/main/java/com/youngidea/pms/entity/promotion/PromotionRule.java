@@ -8,16 +8,7 @@ package com.youngidea.pms.entity.promotion;
 import com.youngidea.pms.entity.order.RuleOrder;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -27,6 +18,8 @@ import javax.persistence.Table;
 @Table(name="PromotionRule")
 public class PromotionRule implements Serializable {
     private static final long serialVersionUID = 1L;
+    private static final int DESCRIPTION_MAX_LENGTH = 4000;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -37,9 +30,13 @@ public class PromotionRule implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="promotionPrice", referencedColumnName = "id") // should be promotionPriceId
     private PromotionPrice promotionPrice;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "promotionRule", fetch = FetchType.LAZY)
-    private List<Promotion> promotions;
+
+    @JoinColumn(name = "promotionID", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Promotion promotion;
+
+    @Column(name = "description", length = DESCRIPTION_MAX_LENGTH)
+    private String description;
 
     public List<RuleOrder> getRuleOrders() {
         return ruleOrders;
@@ -62,20 +59,28 @@ public class PromotionRule implements Serializable {
         this.promotionPrice = promotionPrice;
     }
 
-    public List<Promotion> getPromotions() {
-        return promotions;
+    public Promotion getPromotion() {
+        return promotion;
     }
 
-    public void setPromotions(List<Promotion> promotions) {
-        this.promotions = promotions;
+    public void setPromotion(Promotion promotion) {
+        this.promotion = promotion;
     }
-    
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

@@ -6,14 +6,9 @@
 package com.youngidea.pms.entity.promotion;
 
 import com.youngidea.pms.entity.PMSEntity;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+import java.util.List;
 
 /**
  *
@@ -33,9 +28,8 @@ public class Promotion extends PMSEntity {
     @Column(name = "description", length = DESCRIPTION_MAX_LENGTH)
     private String description;
 
-    @JoinColumn(name = "promotionRuleID", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.MERGE, optional = false, fetch = FetchType.LAZY)
-    private PromotionRule promotionRule;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "promotion", fetch = FetchType.LAZY)
+    private List<PromotionRule> promotionRules;
 
     // Condition
     // Schedule
@@ -62,12 +56,12 @@ public class Promotion extends PMSEntity {
         this.description = description;
     }
 
-    public PromotionRule getPromotionRule() {
-        return promotionRule;
+    public List<PromotionRule> getPromotionRules() {
+        return promotionRules;
     }
 
-    public void setPromotionRule(PromotionRule promotionRule) {
-        this.promotionRule = promotionRule;
+    public void setPromotionRules(List<PromotionRule> promotionRules) {
+        this.promotionRules = promotionRules;
     }
 
     public PeriodicSchedule getPeriodicSchedule() {

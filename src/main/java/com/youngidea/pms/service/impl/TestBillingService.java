@@ -163,21 +163,21 @@ public class TestBillingService extends HttpServlet {
 //            genericFacade.create(DateTimeTest.class, dt);
             
 //            PeriodicSchedule schedule = new PeriodicSchedule();
-//            Date startTime = promotionSchedulerServiceImpl.addTimeToDate(new Date(System.currentTimeMillis()), 
-//                    60000L);
+//            Date startTime = promotionSchedulerServiceImpl.addTimeToDate(new Date(System.currentTimeMillis()),
+//                    70000L);
 //            schedule.setStartTime(startTime);
-//            schedule.setEndTime(promotionSchedulerServiceImpl.addTimeToDate(new Date(System.currentTimeMillis()), 
+//            schedule.setEndTime(promotionSchedulerServiceImpl.addTimeToDate(new Date(System.currentTimeMillis()),
 //                    10000000L));
 //            schedule.setType(PeriodicType.DAILY);
-//            schedule.setPeriodicStartTime(promotionSchedulerServiceImpl.addTimeToDate(startTime, 
-//                    40000L));
+//            schedule.setPeriodicStartTime(promotionSchedulerServiceImpl.addTimeToDate(startTime,
+//                    60000L));
 //            Promotion promotion = new Promotion();
 //            promotion.setName("Test Scheduler promotion");
 //            promotion.setPeriod(5000L);
 //            promotion.setPeriodicSchedule(schedule);
 //            genericFacade.create(Promotion.class, promotion);
             
-            promotionScheduler.schedule(genericFacade.find(Promotion.class, Long.parseLong("50")));
+            promotionScheduler.schedule(genericFacade.find(Promotion.class, Long.parseLong("8")));
 //            promotionSchedulerServiceImpl.scheduleForPromotion(genericFacade.find(Promotion.class, Long.parseLong("49")));
 
             out.println("OK");
