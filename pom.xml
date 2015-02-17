@@ -184,11 +184,11 @@
                 <version>1.7</version>
                 <configuration>
                     <email>seanynguyenn@gmail.com</email>
-                    <password>9bFQuM3DRx</password>
-                    <context>TestBillingService</context>
-                    <environment>demo-2192314</environment>
+                    <password>xuSVnyDXUP</password>
+                    <context>PMS</context>
+                    <environment>PMS-demo</environment>
                     <comment>Jelastic remote server</comment>
-                    <api_hoster>app.jelastic.skali.net</api_hoster>
+                    <api_hoster>app.mpaas.io</api_hoster>
                 </configuration>
             </plugin>
         </plugins>

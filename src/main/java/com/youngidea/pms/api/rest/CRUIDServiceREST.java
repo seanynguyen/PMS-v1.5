@@ -72,7 +72,7 @@ public abstract class CRUIDServiceREST<E extends PMSEntity, RequestModel extends
                 entity(new ValidationError(entityClass.getSimpleName() + " not found", null, null, // will find the way to get path later
                         id.toString())).build();
         }
-        return Response.status(Response.Status.FOUND).
+        return Response.status(Response.Status.OK).
                 entity(getConverter().convert(facade.find(id), null)).build();
 //        return new ItemResponseModel("blahbnlha");
     }
@@ -85,7 +85,7 @@ public abstract class CRUIDServiceREST<E extends PMSEntity, RequestModel extends
             System.out.println(entity.getId());
             models.add(getConverter().convert(entity, null)); 
         }
-        return Response.status(Response.Status.FOUND).
+        return Response.status(Response.Status.OK).
                 entity(models).build();
     }
 

@@ -27,7 +27,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath("r")
+@ApplicationPath("rest")
 public class ApplicationConfig extends Application {
     @Override
     public Set<Class<?>> getClasses() {
@@ -55,5 +55,6 @@ public class ApplicationConfig extends Application {
         resources.add(com.youngidea.pms.api.rest.item.ItemGroupServiceREST.class);
         resources.add(com.youngidea.pms.api.rest.item.ItemServiceREST.class);
         resources.add(com.youngidea.pms.api.rest.item.ItemStatusServiceREST.class);
+        resources.add(org.glassfish.jersey.media.multipart.MultiPartFeature.class);
     }
 }
