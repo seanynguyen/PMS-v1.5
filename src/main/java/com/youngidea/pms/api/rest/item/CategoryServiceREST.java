@@ -62,11 +62,13 @@ public class CategoryServiceREST extends CRUIDServiceREST<Category, CategoryMode
     }
 
     @PUT
+    @Path("{id}")
     @Consumes({"application/xml", "application/json"})
     @Override
-    public Response edit(CategoryModel1 categoryModel) {
+    public Response edit(CategoryModel1 categoryModel, @PathParam("id") Long id) {
+
         super.facade.edit(categoryConverter.convertBack(categoryModel,
-                super.facade.find(categoryModel.getId())));
+                super.facade.find(id)));
         setParent(categoryModel.getId(), categoryModel.getParentId());
         return Response.status(Response.Status.OK).
                 entity(categoryModel).build();

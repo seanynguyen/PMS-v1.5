@@ -45,7 +45,6 @@ public class ApplicationConfig extends Application {
      * resources.add(org.glassfish.jersey.media.multipart.MultiPartFeature.class);
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(com.youngidea.m.ItemServiceREST1.class);
         resources.add(com.youngidea.m.Persons.class);
         resources.add(com.youngidea.m.ValidationExceptionMapper.class);
         resources.add(com.youngidea.pms.api.rest.FileServiceREST.class);

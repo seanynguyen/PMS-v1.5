@@ -55,11 +55,12 @@ public class ItemGroupServiceREST extends CRUIDServiceREST<ItemGroup, ItemGroupR
     
     
     @PUT
+    @Path("{id}")
     @Consumes({"application/xml", "application/json"})
     @Override
-    public Response edit(ItemGroupRequestModel itemGroupRequestModel) {
+    public Response edit(ItemGroupRequestModel itemGroupRequestModel, @PathParam("id") Long id) {
         clearGroupedOrders(itemGroupRequestModel.getId());
-        super.edit(itemGroupRequestModel);
+        super.edit(itemGroupRequestModel, id);
         return Response.status(Response.Status.OK)
                 .entity(itemGroupRequestModel).build();
     }

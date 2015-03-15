@@ -65,9 +65,10 @@ public class ItemServiceREST extends CRUIDServiceREST<Item, ItemRequestModel, It
     }
 
     @PUT
+    @Path("{id}")
     @Consumes({"application/xml", "application/json"})
     @Override
-    public Response edit(ItemRequestModel itemRequestModel) {
+    public Response edit(ItemRequestModel itemRequestModel, @PathParam("id") Long id) {
         clearItemPrices(itemRequestModel.getId());
         for (ItemPriceRequestModel priceBean : itemRequestModel.getItemPrices()) {
             addItemPrice(itemRequestModel.getId(), priceBean);
