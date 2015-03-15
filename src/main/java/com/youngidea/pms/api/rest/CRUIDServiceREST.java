@@ -128,13 +128,15 @@ public abstract class CRUIDServiceREST<E extends PMSEntity, RequestModel extends
     }
 
     @PUT
+    @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public Response edit(RequestModel model) {
+    public Response edit(RequestModel model, @PathParam("id") Long id) {
         // It's already worked ....
 //        facade.edit(getConverter().convertBack(model, facade.find(model.getId())));
 //        return Response.status(Response.Status.OK).
 //                entity(model).build();
         E entity = getConverter().convertBack(model, facade.find(model.getId()));
+        entity.setId(id);
         facade.edit(entity);
         return Response.status(Response.Status.OK).
                 entity(getConverter().convert(entity, null)).build();
