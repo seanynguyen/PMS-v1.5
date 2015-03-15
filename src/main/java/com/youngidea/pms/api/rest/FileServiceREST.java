@@ -34,7 +34,7 @@ import javax.ws.rs.core.StreamingOutput;
 @Path("/file")
 public class FileServiceREST {
 
-//    private static final String FILE_PATH = "/home/sean/Pictures/";
+    private static final String UPLOAD_SUCCESSFUL_MESSAGE = "File Successfully uploaded";
 //    private static final Properties props = new Properties();
     
     @EJB
@@ -68,7 +68,44 @@ public class FileServiceREST {
         // To be updated in the future if there are more mediaType to be uploaded. For now, I just use for image uploading.
         String uploadedFileLocation = propertiesRetriever.getProp("file.path.image") + fileDetail.getFileName();
         UploadHelper.writeToFile(uploadedInputStream, uploadedFileLocation);
-        return Response.status(200).entity(uploadedFileLocation).build();
+        // to be update in the future
+        UploadInfo uploadInfo = new UploadInfo();
+        uploadInfo.setMessage(UPLOAD_SUCCESSFUL_MESSAGE);
+        uploadInfo.setName(fileDetail.getFileName());
+        uploadInfo.setUrl(uploadedFileLocation);
+
+        return Response.status(200).entity(uploadInfo).build();
+    }
+
+    private class UploadInfo {
+        private String message;
+        private String name;
+        private String url;
+
+        public String getMessage() {
+            return this.message;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public String getUrl() {
+            return this.url;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
     }
 
     @GET
