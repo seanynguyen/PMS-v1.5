@@ -5,7 +5,11 @@
     <groupId>com.youngidea</groupId>
     <artifactId>PMS</artifactId>
     <version>1.5</version>
-    <packaging>war</packaging>
+    <modules>
+        <module>pms-core</module>
+        <module>pms-rest</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <name>PMS-1.5</name>
     <description>Promotion management enterprise system</description>
