@@ -12,9 +12,9 @@ import com.youngidea.pms.entity.item.Category;
 import com.youngidea.pms.entity.item.Item;
 import com.youngidea.pms.entity.item.ItemPrice;
 import com.youngidea.pms.entity.item.ItemStatus;
-import com.youngidea.pms.model.request.ItemPriceRequestModel;
-import com.youngidea.pms.model.request.ItemRequestModel;
-import com.youngidea.pms.model.response.ItemResponseModel;
+import com.youngidea.pms.api.rest.model.request.ItemPriceRequestModel;
+import com.youngidea.pms.api.rest.model.request.ItemRequestModel;
+import com.youngidea.pms.api.rest.model.response.ItemResponseModel;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.validation.Valid;
@@ -133,7 +133,7 @@ public class ItemServiceREST extends CRUIDServiceREST<Item, ItemRequestModel, It
     @Consumes({"application/xml", "application/json"})
     @Path("/testValidation")
     public Response testValidation(@Valid Person item) {
-//        facade.create(getConverter().convertBack(model, null));
+//        dao.create(getConverter().convertBack(model, null));
         return Response.status(Response.Status.CREATED).
                 entity(item).build();
     }

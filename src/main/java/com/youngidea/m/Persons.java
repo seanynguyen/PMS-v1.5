@@ -18,7 +18,7 @@
  */
 package com.youngidea.m;
 
-import com.youngidea.pms.model.request.ItemRequestModel;
+import com.youngidea.pms.api.rest.model.request.ItemRequestModel;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
@@ -27,9 +27,7 @@ import javax.validation.Valid;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;

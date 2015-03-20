@@ -6,12 +6,11 @@
 package com.youngidea.pms.converter;
 
 import com.youngidea.pms.entity.item.ItemGroup;
-import com.youngidea.pms.entity.item.ItemPrice;
 import com.youngidea.pms.entity.order.GroupedOrder;
 import com.youngidea.pms.facade.GenericFacade;
-import com.youngidea.pms.model.OrderRequestModel;
-import com.youngidea.pms.model.request.ItemGroupRequestModel;
-import com.youngidea.pms.model.response.ItemGroupResponseModel;
+import com.youngidea.pms.api.rest.model.OrderRequestModel;
+import com.youngidea.pms.api.rest.model.request.ItemGroupRequestModel;
+import com.youngidea.pms.api.rest.model.response.ItemGroupResponseModel;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 

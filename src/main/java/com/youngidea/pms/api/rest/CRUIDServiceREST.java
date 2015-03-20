@@ -10,7 +10,7 @@ import com.youngidea.pms.converter.AbstractConverter;
 import com.youngidea.pms.entity.PMSEntity;
 import com.youngidea.pms.facade.BaseEntityFacade;
 import com.youngidea.pms.facade.GenericFacade;
-import com.youngidea.pms.model.AbstractBean;
+import com.youngidea.pms.api.rest.model.AbstractBean;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -66,7 +66,7 @@ public abstract class CRUIDServiceREST<E extends PMSEntity, RequestModel extends
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("id") Long id) {
-//        return getConverter().convert(facade.find(id), null);
+//        return getConverter().convert(dao.find(id), null);
         if (facade.find(id) == null) {
             return Response.status(Response.Status.BAD_REQUEST).
                 entity(new ValidationError(entityClass.getSimpleName() + " not found", null, null, // will find the way to get path later
@@ -93,7 +93,7 @@ public abstract class CRUIDServiceREST<E extends PMSEntity, RequestModel extends
     @Consumes({"application/xml", "application/json"})
     public Response create(@Valid RequestModel model) {
         // It's already worked ....
-//        facade.create(getConverter().convertBack(model, null));
+//        dao.create(getConverter().convertBack(model, null));
 //        return Response.status(Response.Status.CREATED).
 //                entity(model).build();
         E entity = getConverter().convertBack(model, null);
@@ -105,7 +105,7 @@ public abstract class CRUIDServiceREST<E extends PMSEntity, RequestModel extends
 //    @POST
 //    @Consumes({"application/xml", "application/json"})
 //    public Response testValidation(ItemRequestModel person) {
-////        facade.create(getConverter().convertBack(model, null));
+////        dao.create(getConverter().convertBack(model, null));
 //        return Response.status(Response.Status.CREATED).
 //                entity(person).build();
 //    }
@@ -113,7 +113,7 @@ public abstract class CRUIDServiceREST<E extends PMSEntity, RequestModel extends
     @DELETE
     @Path("{id}")
     public Response remove(@PathParam("id") Long id) {
-//        E entity = (E) modelValidator.validateEntity(entityClass, facade.find(id));
+//        E entity = (E) modelValidator.validateEntity(entityClass, dao.find(id));
         // <!-- Experimental purpose
         if (facade.find(id) == null) {
             return Response.status(Response.Status.BAD_REQUEST).
@@ -132,7 +132,7 @@ public abstract class CRUIDServiceREST<E extends PMSEntity, RequestModel extends
     @Consumes({"application/xml", "application/json"})
     public Response edit(RequestModel model, @PathParam("id") Long id) {
         // It's already worked ....
-//        facade.edit(getConverter().convertBack(model, facade.find(model.getId())));
+//        dao.edit(getConverter().convertBack(model, dao.find(model.getId())));
 //        return Response.status(Response.Status.OK).
 //                entity(model).build();
         E entity = getConverter().convertBack(model, facade.find(model.getId()));

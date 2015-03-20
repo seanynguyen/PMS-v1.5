@@ -8,7 +8,7 @@ package com.youngidea.pms.api.rest.item;
 import com.youngidea.pms.api.rest.CRUIDServiceREST;
 import com.youngidea.pms.converter.ItemStatusConverter;
 import com.youngidea.pms.entity.item.ItemStatus;
-import com.youngidea.pms.model.response.ItemStatusModel;
+import com.youngidea.pms.api.rest.model.response.ItemStatusModel;
 import javax.ejb.EJB;
 import javax.ws.rs.Path;
 

@@ -8,7 +8,7 @@ package com.youngidea.pms.api.rest.item;
 import com.youngidea.pms.api.rest.CRUIDServiceREST;
 import com.youngidea.pms.converter.CategoryConverter;
 import com.youngidea.pms.entity.item.Category;
-import com.youngidea.pms.model.response.CategoryModel1;
+import com.youngidea.pms.api.rest.model.response.CategoryModel1;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;

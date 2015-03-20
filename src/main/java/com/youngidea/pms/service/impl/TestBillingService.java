@@ -6,30 +6,16 @@
 
 package com.youngidea.pms.service.impl;
 
-import com.google.common.collect.Lists;
-import com.youngidea.pms.entity.item.Item;
-import com.youngidea.pms.entity.item.ItemGroup;
-import com.youngidea.pms.entity.item.ItemPrice;
-import com.youngidea.pms.entity.order.DiscountOrder;
-import com.youngidea.pms.entity.order.PriceOrder;
-import com.youngidea.pms.entity.order.RuleOrder;
-import com.youngidea.pms.entity.promotion.PeriodicSchedule;
 import com.youngidea.pms.entity.promotion.Promotion;
-import com.youngidea.pms.entity.promotion.PromotionPrice;
-import com.youngidea.pms.entity.promotion.PromotionRule;
 import com.youngidea.pms.facade.GenericFacade;
-import com.youngidea.pms.model.OrderRequestModel;
+import com.youngidea.pms.api.rest.model.OrderRequestModel;
 import com.youngidea.pms.service.BillingService;
 import com.youngidea.pms.service.PromotionHandler;
 import com.youngidea.pms.service.PromotionScheduler;
 import com.youngidea.pms.service.SchedulerService;
-import com.youngidea.pms.test.DateTimeTest;
-import com.youngidea.pms.ultilities.PeriodicType;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Time;
-import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -39,7 +25,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.quartz.SchedulerException;
-import org.quartz.impl.StdSchedulerFactory;
+
 /**
  *
  * @author sean

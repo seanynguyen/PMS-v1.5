@@ -11,7 +11,7 @@ import com.youngidea.pms.entity.order.RuleOrder;
 import com.youngidea.pms.entity.promotion.PromotionCondition;
 import com.youngidea.pms.entity.promotion.PromotionPrice;
 import com.youngidea.pms.entity.promotion.PromotionRule;
-import com.youngidea.pms.model.OrderRequestModel;
+import com.youngidea.pms.api.rest.model.OrderRequestModel;
 import com.youngidea.pms.service.PromotionHandler;
 import com.youngidea.pms.ultilities.OrdersList;
 import java.util.ArrayList;

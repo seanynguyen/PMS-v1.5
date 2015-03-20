@@ -5,8 +5,8 @@
  */
 package com.youngidea.pms.api.rest;
 
-import com.youngidea.pms.model.OrderRequestModel;
-import com.youngidea.pms.model.response.OrdersInfoResponseModel;
+import com.youngidea.pms.api.rest.model.OrderRequestModel;
+import com.youngidea.pms.api.rest.model.response.OrdersInfoResponseModel;
 import com.youngidea.pms.service.BillingService;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

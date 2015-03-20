@@ -5,9 +5,9 @@
  */
 package com.youngidea.pms.service;
 
-import com.youngidea.pms.model.OrderRequestModel;
-import com.youngidea.pms.model.response.OrderResponseModel;
-import com.youngidea.pms.ultilities.OrdersList;
+import com.youngidea.pms.api.rest.model.OrderRequestModel;
+import com.youngidea.pms.api.rest.model.response.OrderResponseModel;
+
 import java.util.List;
 import javax.ejb.Local;
 

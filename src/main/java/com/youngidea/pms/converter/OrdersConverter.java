@@ -8,11 +8,9 @@ package com.youngidea.pms.converter;
 import com.youngidea.pms.entity.item.ItemPrice;
 import com.youngidea.pms.entity.order.DiscountOrder;
 import com.youngidea.pms.entity.order.GeneralOrder;
-import com.youngidea.pms.entity.order.PriceOrder;
 import com.youngidea.pms.facade.GenericFacade;
-import com.youngidea.pms.model.OrderRequestModel;
-import com.youngidea.pms.model.response.ItemUnit;
-import com.youngidea.pms.model.response.OrderResponseModel;
+import com.youngidea.pms.api.rest.model.OrderRequestModel;
+import com.youngidea.pms.api.rest.model.response.OrderResponseModel;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 

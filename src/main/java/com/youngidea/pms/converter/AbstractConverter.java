@@ -7,7 +7,7 @@ package com.youngidea.pms.converter;
 
 
 import com.youngidea.pms.entity.PMSEntity;
-import com.youngidea.pms.model.AbstractBean;
+import com.youngidea.pms.api.rest.model.AbstractBean;
 
 /**
  *

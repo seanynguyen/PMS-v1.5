@@ -6,7 +6,7 @@
 package com.youngidea.pms.converter;
 
 import com.youngidea.pms.entity.item.ItemStatus;
-import com.youngidea.pms.model.response.ItemStatusModel;
+import com.youngidea.pms.api.rest.model.response.ItemStatusModel;
 import javax.ejb.Stateless;
 
 /**
