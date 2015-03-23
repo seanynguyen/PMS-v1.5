@@ -5,12 +5,14 @@
  */
 package com.youngidea.pms.facade;
 
+import javax.ejb.Local;
 import java.util.List;
 
 /**
  *
  * @author sean
  */
+@Local
 public interface BaseEntityFacade<T> {
     
     void initEntity(Class<T> entityClass);
