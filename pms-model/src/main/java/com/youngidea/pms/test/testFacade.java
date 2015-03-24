@@ -7,10 +7,8 @@
 package com.youngidea.pms.test;
 
 import com.youngidea.pms.entity.item.Item;
-import com.youngidea.pms.entity.promotion.Promotion;
 import com.youngidea.pms.facade.BaseEntityFacade;
 import com.youngidea.pms.facade.GenericFacade;
-import com.youngidea.pms.facade.impl.GenericFacadeImpl;
 import org.quartz.SchedulerException;
 
 import javax.ejb.EJB;
@@ -31,7 +29,7 @@ import java.util.logging.Logger;
 @WebServlet(name = "testFacade", urlPatterns = {"/testFacade"})
 public class testFacade extends HttpServlet {
     @EJB
-    private BaseEntityFacade baseEntityFacade;
+    private GenericFacade baseEntityFacade;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -47,8 +45,9 @@ public class testFacade extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             Item item = new Item();
-            item.setName("blah");
-            baseEntityFacade.create(item);
+            item.setId(Long.parseLong("4"));
+            item.setName("blahblah");
+            baseEntityFacade.edit(item);
             out.println("OK");
         }
     }

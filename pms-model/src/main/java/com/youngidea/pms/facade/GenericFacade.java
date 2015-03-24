@@ -12,17 +12,18 @@ import java.util.List;
  *
  * @author sean
  * @param <T>
+ *     This class is to independently use JPA service
  */
 @Local
-public interface GenericFacade {
+public interface GenericFacade<E> {
     
-    public <T> void create(Class<T> entityClass, T entity);
+    public void create(E entity);
     
-    public <T> void edit(Class<T> entityClass, T entity);
+    public void edit(E entity);
     
-    public <T> void remove(Class<T> entityClass, T entity);
+    public void remove(E entity);
     
     public <T> List<T> findAll(Class<T> entityClass);
-    
+
     public <T> T find(Class<T> entityClass, Object id);
 }

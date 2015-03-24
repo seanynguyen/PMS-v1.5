@@ -5,9 +5,7 @@
  */
 package com.youngidea.pms.facade.impl;
 
-import com.youngidea.pms.facade.BaseEntityFacade;
 import com.youngidea.pms.facade.GenericFacade;
-import org.apache.log4j.spi.LoggerFactory;
 import org.slf4j.Logger;
 
 import javax.ejb.Stateless;
@@ -20,7 +18,7 @@ import java.util.List;
  * @author sean
  */
 @Stateless
-public class GenericFacadeImpl<E> implements GenericFacade, BaseEntityFacade<E>{
+public class GenericFacadeImpl<E> implements GenericFacade<E>{
     private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(GenericFacadeImpl.class);
 
     @PersistenceContext(unitName = "PMS-v1PU")
@@ -50,10 +48,12 @@ public class GenericFacadeImpl<E> implements GenericFacade, BaseEntityFacade<E>{
 
     }
 
+    @Override
     public void edit(E entity) {
         em.merge(entity);
     }
 
+    @Override
     public void remove(E entity) {
         em.remove(em.merge(entity));
     }
@@ -68,7 +68,7 @@ public class GenericFacadeImpl<E> implements GenericFacade, BaseEntityFacade<E>{
         return getEntityManager().find(entityClass, id);
     }
 
-    protected List<E> findRange(int[] range) {
+    public List<E> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
@@ -77,7 +77,7 @@ public class GenericFacadeImpl<E> implements GenericFacade, BaseEntityFacade<E>{
         return q.getResultList();
     }
 
-    protected int count() {
+    public int count() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         javax.persistence.criteria.Root<E> rt = cq.from(entityClass);
         cq.select(getEntityManager().getCriteriaBuilder().count(rt));
@@ -85,21 +85,7 @@ public class GenericFacadeImpl<E> implements GenericFacade, BaseEntityFacade<E>{
         return ((Long) q.getSingleResult()).intValue();
     }
 
-    // To be used independently
-    @Override
-    public <T> void create(Class<T> entityClass, T entity) {
-        em.persist(entity);
-    }
-
-    @Override
-    public <T> void edit(Class<T> entityClass, T entity) {
-        em.merge(entity);
-    }
-
-    @Override
-    public <T> void remove(Class<T> entityClass, T entity) {
-        em.remove(em.merge(entity));
-    }
+    // To be used independently ---------------------------
 
     @Override
     public <T> List<T> findAll(Class<T> entityClass) {
