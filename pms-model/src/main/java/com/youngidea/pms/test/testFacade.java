@@ -7,8 +7,9 @@
 package com.youngidea.pms.test;
 
 import com.youngidea.pms.entity.item.Item;
-import com.youngidea.pms.facade.BaseEntityFacade;
 import com.youngidea.pms.facade.GenericFacade;
+import com.youngidea.pms.facade.ItemFacade;
+import com.youngidea.pms.facade.impl.ItemFacadeImpl;
 import org.quartz.SchedulerException;
 
 import javax.ejb.EJB;
@@ -31,6 +32,10 @@ public class testFacade extends HttpServlet {
     @EJB
     private GenericFacade baseEntityFacade;
 
+    @EJB
+    private ItemFacade itemFacade;
+
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -46,8 +51,8 @@ public class testFacade extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             Item item = new Item();
             item.setId(Long.parseLong("4"));
-            item.setName("blahblah");
-            baseEntityFacade.edit(item);
+            item.setName("blahblah123");
+            itemFacade.edit(item);
             out.println("OK");
         }
     }

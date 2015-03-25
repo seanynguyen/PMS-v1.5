@@ -38,6 +38,7 @@ public abstract class CRUIDServiceREST<E extends PMSEntity, RequestModel extends
     protected Class<ResponseModel> responseModelClass;
 
     protected abstract <C extends AbstractConverter<E, RequestModel, ResponseModel>> C getConverter();
+    // abstract getModelDAO
 
     public CRUIDServiceREST(Class<RequestModel> requestModelClass, Class<ResponseModel> responseModelClass, Class<E> entityClass) {
         this.entityClass = entityClass;
