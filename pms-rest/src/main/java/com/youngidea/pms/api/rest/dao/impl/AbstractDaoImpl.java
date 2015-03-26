@@ -16,10 +16,10 @@ public abstract class AbstractDaoImpl<E extends PMSEntity, RequestModel extends 
 
     protected abstract <C extends AbstractConverter<E, RequestModel, ResponseModel>> C getConverter();
 
-    public void create(E preparedEntity) {
+    public void create(RequestModel requestModel) {
         // let the child class does some shit ...
         //...
-        getFacade().create(preparedEntity);
+        getFacade().create(getConverter().convertBack(requestModel, null));
     };
 
     public void edit(RequestModel requestModel) {

@@ -9,10 +9,7 @@ package com.youngidea.pms.test;
 import com.youngidea.pms.entity.item.Item;
 import com.youngidea.pms.facade.GenericFacade;
 import com.youngidea.pms.facade.ItemFacade;
-import com.youngidea.pms.facade.impl.ItemFacadeImpl;
 import org.apache.log4j.BasicConfigurator;
-import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
 import org.quartz.SchedulerException;
 
 import javax.ejb.EJB;

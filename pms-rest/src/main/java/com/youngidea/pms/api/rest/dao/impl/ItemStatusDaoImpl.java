@@ -9,6 +9,7 @@ import com.youngidea.pms.facade.GenericFacade;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.List;
 
 /**
  * Created by sean on 3/25/15.
@@ -19,14 +20,32 @@ public class ItemStatusDaoImpl implements ItemStatusDao {
     @EJB
     private GenericFacade<ItemStatus> genericFacade;
 
+
     @Override
     public void create(ItemStatusModel itemStatusModel) {
         genericFacade.create(ItemStatusConverter.convertToEntity(itemStatusModel, null));
     }
 
-    public void edit() {
+    @Override
+    public void edit(ItemStatusModel itemStatusModel) {
 
     }
+
+    @Override
+    public void remove(ItemStatusModel itemStatusModel) {
+
+    }
+
+    @Override
+    public List<ItemStatusModel> findAll() {
+        return null;
+    }
+
+    @Override
+    public ItemStatusModel find(Object id) {
+        return null;
+    }
+
 
 
 }

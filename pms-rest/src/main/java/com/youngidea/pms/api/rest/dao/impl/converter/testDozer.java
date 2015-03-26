@@ -1,12 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+package com.youngidea.pms.api.rest.dao.impl.converter;
+
+/**
+ * Created by sean on 3/26/15.
  */
-
-package com.youngidea.pms.test;
-
+import com.youngidea.pms.api.rest.dao.impl.ItemStatusDaoImpl;
+import com.youngidea.pms.api.rest.model.response.ItemStatusModel;
 import com.youngidea.pms.entity.item.Item;
+import com.youngidea.pms.entity.item.ItemStatus;
 import com.youngidea.pms.facade.GenericFacade;
 import com.youngidea.pms.facade.ItemFacade;
 import com.youngidea.pms.facade.impl.ItemFacadeImpl;
@@ -32,14 +32,10 @@ import java.util.logging.Logger;
  *
  * @author sean
  */
-@WebServlet(name = "testFacade", urlPatterns = {"/testFacade"})
-public class testFacade extends HttpServlet {
+@WebServlet(name = "testDozer", urlPatterns = {"/testDozer"})
+public class testDozer extends HttpServlet {
     @EJB
-    private GenericFacade baseEntityFacade;
-
-    @EJB
-    private ItemFacade itemFacade;
-
+    private GenericFacade<ItemStatus> genericFacade;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -55,28 +51,12 @@ public class testFacade extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             BasicConfigurator.configure();
+            ItemStatusDozerConverter itemStatusDozerConverter = new ItemStatusDozerConverter();
+            ItemStatus itemStatus = genericFacade.find(ItemStatus.class, new Long("1"));
 
-            final List<String> mappingFilesNames = new ArrayList<>();
+            out.println(itemStatusDozerConverter.convert(itemStatus, new ItemStatusModel()).getStatusName());
 
-            Item item = new Item();
-            item.setId(Long.parseLong("4"));
-            item.setName("blahblah123");
-            itemFacade.edit(item);
             out.println("OK");
-
-            // test dozer
-//            DozerBeanMapper mapper = new DozerBeanMapper();
-//            mappingFilesNames.add("dozer.xml");
-//            mapper.setMappingFiles(mappingFilesNames);
-//
-//            dto1 newDto1 = new dto1();
-//            newDto1.setMyName("SEAN");
-//
-//            dto2 destObject =
-//                    mapper.map(newDto1, dto2.class);
-//            out.println(destObject.getName());
-//            out.println(destObject.getCompany());
-
         }
     }
 
@@ -95,9 +75,9 @@ public class testFacade extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SchedulerException ex) {
-            Logger.getLogger(testFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(testDozer.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {
-            Logger.getLogger(testFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(testDozer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -115,9 +95,9 @@ public class testFacade extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SchedulerException ex) {
-            Logger.getLogger(testFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(testDozer.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {
-            Logger.getLogger(testFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(testDozer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -132,3 +112,4 @@ public class testFacade extends HttpServlet {
     }// </editor-fold>
 
 }
+

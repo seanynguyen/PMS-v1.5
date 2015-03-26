@@ -74,7 +74,7 @@ public class ItemConverter extends AbstractConverter<Item, ItemRequestModel, Ite
         itemUnit.setImageURL(item.getImageURL());
         ItemPriceResponseModel itemPriceResponseModel = new ItemPriceResponseModel();
         itemPriceResponseModel.setId(input.getId());
-        itemPriceResponseModel.setItemStatusBean(ItemStatusConverter.INSTANCE.convert(input.getItemStatus(), null));
+//        itemPriceResponseModel.setItemStatusBean(ItemStatusConverter.INSTANCE.convert(input.getItemStatus(), null));
         itemPriceResponseModel.setPrice(input.getPrice());
         itemUnit.setItemPriceResponseModel(itemPriceResponseModel);
         return itemUnit;
