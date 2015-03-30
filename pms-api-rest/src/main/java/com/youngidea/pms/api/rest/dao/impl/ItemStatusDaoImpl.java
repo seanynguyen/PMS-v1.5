@@ -57,7 +57,6 @@ public class ItemStatusDaoImpl extends AbstractDaoImpl<ItemStatus, ItemStatusMod
 //
     @Override
     public ItemStatusModel find(Object id) {
-        LOGGER.info("-------------------------->" + itemStatusDozerConverter.convert(genericFacade.find(ItemStatus.class, id)).getStatusName());
         return itemStatusDozerConverter.convert(genericFacade.find(ItemStatus.class, id));
     }
 //

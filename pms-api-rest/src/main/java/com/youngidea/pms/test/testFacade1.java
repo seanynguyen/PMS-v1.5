@@ -7,8 +7,11 @@
 package com.youngidea.pms.test;
 
 
+import com.google.common.collect.Lists;
+import com.youngidea.pms.entity.item.Category;
 import com.youngidea.pms.entity.item.Item;
 import com.youngidea.pms.facade.GenericFacade;
+import com.youngidea.pms.facade.ItemFacade;
 import org.apache.log4j.BasicConfigurator;
 import org.quartz.SchedulerException;
 
@@ -32,8 +35,10 @@ import java.util.logging.Logger;
 @WebServlet(name = "testFacade", urlPatterns = {"/testFacade"})
 public class testFacade1 extends HttpServlet {
     @EJB
-    private GenericFacade baseEntityFacade;
+    private GenericFacade<Category> genericFacade;
 
+    @EJB
+    private ItemFacade itemFacade;
 
 
 //    @EJB
@@ -57,10 +62,32 @@ public class testFacade1 extends HttpServlet {
 
             final List<String> mappingFilesNames = new ArrayList<>();
 
+            List<Item> items = Lists.newArrayList();
             Item item = new Item();
+            item.setId(Long.parseLong("3"));
+            item.setName("Latte");
+
+            Item item2 = new Item();
             item.setId(Long.parseLong("4"));
-            item.setName("blahblah123");
+            item.setName("Mocha");
+
+//            Category category = new Category();
+//            category.setId(new Long("1"));
+//            category.setName("Italian Coffee");
+
+            Category category = genericFacade.find(Category.class, Long.parseLong("1"));
+
+//            item.setCategory(category);
+//            item.setCategory(category);
+//            genericFacade.create(category);
 //            itemFacade.edit(item);
+            items.add(item);
+            items.add(item2);
+            category.setItems(items);
+
+            genericFacade.edit(category);
+
+
             out.println("Holly Shit, Bitch !!!!!");
             out.println("OKKKK");
 
