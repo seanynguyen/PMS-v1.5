@@ -6,8 +6,9 @@
     <artifactId>PMS</artifactId>
     <version>1.5</version>
     <modules>
-        <module>pms-rest</module>
         <module>pms-model</module>
+        <module>pms-rest</module>
+        <module>pms-api-rest</module>
     </modules>
     <packaging>pom</packaging>
 

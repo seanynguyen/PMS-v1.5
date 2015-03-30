@@ -3,16 +3,10 @@ package com.youngidea.pms.api.rest.dao.impl.converter;
 /**
  * Created by sean on 3/26/15.
  */
-import com.youngidea.pms.api.rest.dao.impl.ItemStatusDaoImpl;
 import com.youngidea.pms.api.rest.model.response.ItemStatusModel;
-import com.youngidea.pms.entity.item.Item;
 import com.youngidea.pms.entity.item.ItemStatus;
 import com.youngidea.pms.facade.GenericFacade;
-import com.youngidea.pms.facade.ItemFacade;
-import com.youngidea.pms.facade.impl.ItemFacadeImpl;
 import org.apache.log4j.BasicConfigurator;
-import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
 import org.quartz.SchedulerException;
 
 import javax.ejb.EJB;
@@ -23,8 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,7 +24,7 @@ import java.util.logging.Logger;
  *
  * @author sean
  */
-@WebServlet(name = "testDozer", urlPatterns = {"/testDozer"})
+@WebServlet(name = "testDozer", urlPatterns = {"/"})
 public class testDozer extends HttpServlet {
     @EJB
     private GenericFacade<ItemStatus> genericFacade;

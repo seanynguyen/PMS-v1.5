@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+package com.youngidea.pms.api.rest.dao.impl.converter;
+
+/**
+ * Created by sean on 3/26/15.
  */
-
-package com.youngidea.pms.test;
-
-import com.youngidea.pms.entity.item.Item;
+import com.youngidea.pms.api.rest.dao.ItemStatusDao;
+import com.youngidea.pms.api.rest.model.response.ItemStatusModel;
+import com.youngidea.pms.entity.item.ItemStatus;
 import com.youngidea.pms.facade.GenericFacade;
-import com.youngidea.pms.facade.ItemFacade;
 import org.apache.log4j.BasicConfigurator;
 import org.quartz.SchedulerException;
 
@@ -20,8 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,15 +25,13 @@ import java.util.logging.Logger;
  *
  * @author sean
  */
-@WebServlet(name = "testFacade", urlPatterns = {"/testFacade"})
-public class testFacade extends HttpServlet {
+@WebServlet(name = "testDozer", urlPatterns = {"/"})
+public class testDozer extends HttpServlet {
     @EJB
-    private GenericFacade baseEntityFacade;
+    private GenericFacade<ItemStatus> genericFacade;
 
     @EJB
-    private ItemFacade itemFacade;
-
-
+    private ItemStatusDao itemStatusDao;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -51,29 +45,17 @@ public class testFacade extends HttpServlet {
             throws ServletException, IOException, SchedulerException, InterruptedException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            BasicConfigurator.configure();
-
-            final List<String> mappingFilesNames = new ArrayList<>();
-
-            Item item = new Item();
-            item.setId(Long.parseLong("4"));
-            item.setName("blahblah123");
-            itemFacade.edit(item);
+//            BasicConfigurator.configure();
+            ItemStatusDozerConverter itemStatusDozerConverter = new ItemStatusDozerConverter();
+            ItemStatus itemStatus = genericFacade.find(ItemStatus.class, new Long("1"));
+//
+//            out.println(itemStatusDozerConverter.convert(itemStatus).getStatusName());
+//            ItemStatusModel itemStatusModel = new ItemStatusModel("Blended","Ice Blended","shit");
+            out.println(itemStatusDao.find(new Long("2")));
+            out.println(itemStatusDozerConverter.convert(genericFacade.find(ItemStatus.class, new Long("2"))));
+//            out.println(genericFacade.find(ItemStatus.class, new Long("2")).getName());
+            out.println("FUCK THAT SHIT !!");
             out.println("OK");
-
-            // test dozer
-//            DozerBeanMapper mapper = new DozerBeanMapper();
-//            mappingFilesNames.add("dozer.xml");
-//            mapper.setMappingFiles(mappingFilesNames);
-//
-//            dto1 newDto1 = new dto1();
-//            newDto1.setMyName("SEAN");
-//
-//            dto2 destObject =
-//                    mapper.map(newDto1, dto2.class);
-//            out.println(destObject.getName());
-//            out.println(destObject.getCompany());
-
         }
     }
 
@@ -92,9 +74,9 @@ public class testFacade extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SchedulerException ex) {
-            Logger.getLogger(testFacade1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(testDozer.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {
-            Logger.getLogger(testFacade1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(testDozer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -112,9 +94,9 @@ public class testFacade extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SchedulerException ex) {
-            Logger.getLogger(testFacade1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(testDozer.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {
-            Logger.getLogger(testFacade1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(testDozer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -129,3 +111,4 @@ public class testFacade extends HttpServlet {
     }// </editor-fold>
 
 }
+

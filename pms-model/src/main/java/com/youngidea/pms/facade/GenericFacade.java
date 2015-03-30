@@ -22,7 +22,11 @@ public interface GenericFacade<E> {
     public void edit(E entity);
     
     public void remove(E entity);
-    
+
+    public List<E> findAll();
+
+    public E find(Object id);
+
     public <T> List<T> findAll(Class<T> entityClass);
 
     public <T> T find(Class<T> entityClass, Object id);

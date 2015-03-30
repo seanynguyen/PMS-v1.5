@@ -6,6 +6,10 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
+        </sourceRoots>
       </configuration>
     </facet>
   </component>
@@ -17,6 +21,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/annotations" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/pms-rest/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pms-api-rest/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pms-api-rest/src/main/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target/PMS-1.5" />
       <excludeFolder url="file://$MODULE_DIR$/target/endorsed" />
       <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
@@ -25,6 +32,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="pms-model" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:eclipselink:2.5.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:javax.persistence:2.1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:commonj.sdo:2.1.1" level="project" />

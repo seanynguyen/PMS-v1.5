@@ -6,9 +6,9 @@
 
 package com.youngidea.pms.test;
 
+
 import com.youngidea.pms.entity.item.Item;
 import com.youngidea.pms.facade.GenericFacade;
-import com.youngidea.pms.facade.ItemFacade;
 import org.apache.log4j.BasicConfigurator;
 import org.quartz.SchedulerException;
 
@@ -30,12 +30,14 @@ import java.util.logging.Logger;
  * @author sean
  */
 @WebServlet(name = "testFacade", urlPatterns = {"/testFacade"})
-public class testFacade extends HttpServlet {
+public class testFacade1 extends HttpServlet {
     @EJB
     private GenericFacade baseEntityFacade;
 
-    @EJB
-    private ItemFacade itemFacade;
+
+
+//    @EJB
+//    private ItemFacade itemFacade;
 
 
     /**
@@ -58,8 +60,9 @@ public class testFacade extends HttpServlet {
             Item item = new Item();
             item.setId(Long.parseLong("4"));
             item.setName("blahblah123");
-            itemFacade.edit(item);
-            out.println("OK");
+//            itemFacade.edit(item);
+            out.println("Holly Shit, Bitch !!!!!");
+            out.println("OKKKK");
 
             // test dozer
 //            DozerBeanMapper mapper = new DozerBeanMapper();
