@@ -16,18 +16,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.youngidea.m;
+package com.youngidea.pms.api.rest.m;
 
-import com.owlike.genson.ext.jaxrs.GensonJsonConverter;
-import com.youngidea.pms.api.rest.RestResponseFilter;
-import com.youngidea.pms.api.rest.item.CategoryServiceREST;
-import com.youngidea.pms.api.rest.item.ItemServiceREST;
-import com.youngidea.pms.api.rest.item.ItemStatusServiceREST;
-import java.util.Set;
+
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
+import java.util.Set;
 
-@ApplicationPath("rest")
+@ApplicationPath("rest1")
 public class ApplicationConfig extends Application {
     @Override
     public Set<Class<?>> getClasses() {
@@ -45,15 +41,9 @@ public class ApplicationConfig extends Application {
      * resources.add(org.glassfish.jersey.media.multipart.MultiPartFeature.class);
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(com.youngidea.m.Persons.class);
-        resources.add(com.youngidea.m.ValidationExceptionMapper.class);
-        resources.add(com.youngidea.pms.api.rest.FileServiceREST.class);
-        resources.add(com.youngidea.pms.api.rest.OrderServiceREST.class);
-        resources.add(com.youngidea.pms.api.rest.RestResponseFilter.class);
-        resources.add(com.youngidea.pms.api.rest.item.CategoryServiceREST.class);
-        resources.add(com.youngidea.pms.api.rest.item.ItemGroupServiceREST.class);
-        resources.add(com.youngidea.pms.api.rest.item.ItemServiceREST.class);
-        resources.add(com.youngidea.pms.api.rest.item.ItemStatusServiceREST.class);
+        resources.add(Persons.class);
+        resources.add(ValidationExceptionMapper.class);
+
         resources.add(org.glassfish.jersey.media.multipart.MultiPartFeature.class);
     }
 }

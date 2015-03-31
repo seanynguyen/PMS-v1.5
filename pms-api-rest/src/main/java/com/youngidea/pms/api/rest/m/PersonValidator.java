@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.youngidea.m;
+package com.youngidea.pms.api.rest.m;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

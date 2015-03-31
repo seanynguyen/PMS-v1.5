@@ -5,7 +5,7 @@
  */
 package com.youngidea.pms.api.rest.item;
 
-import com.youngidea.m.Person;
+import com.youngidea.pms.api.rest.m.Person;
 import com.youngidea.pms.api.rest.CRUIDServiceREST;
 import com.youngidea.pms.converter.ItemConverter;
 import com.youngidea.pms.entity.item.Category;

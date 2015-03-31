@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.youngidea.m;
+package com.youngidea.pms.api.rest.m;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

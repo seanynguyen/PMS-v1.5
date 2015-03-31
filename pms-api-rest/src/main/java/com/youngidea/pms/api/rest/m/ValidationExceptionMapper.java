@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.youngidea.pms.api.rest;
+package com.youngidea.pms.api.rest.m;
 
 import org.glassfish.jersey.server.validation.ValidationError;
 import org.glassfish.jersey.server.validation.internal.LocalizationMessages;
@@ -56,6 +56,7 @@ public class ValidationExceptionMapper implements ExceptionMapper<ValidationExce
     public Response toResponse(final ValidationException exception) {
         if (exception instanceof ConstraintViolationException) {
             LOGGER.log(Level.FINER, LocalizationMessages.CONSTRAINT_VIOLATIONS_ENCOUNTERED(), exception);
+            LOGGER.info("OKKKKKKKKKKKKK");
             final ConstraintViolationException cve = (ConstraintViolationException) exception;
             final Response.ResponseBuilder response = Response.status(getStatus(cve));
 

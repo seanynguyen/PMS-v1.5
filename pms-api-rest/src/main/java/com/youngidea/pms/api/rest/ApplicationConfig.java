@@ -46,7 +46,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(ValidationExceptionMapper.class);
-        resources.add(com.youngidea.pms.api.rest.ValidationExceptionMapper.class);
+//        resources.add(com.youngidea.pms.api.rest.service.impl.ValidationExceptionMapper.class);
 //        resources.add(FileServiceREST.class);
 //        resources.add(OrderServiceREST.class);
 //        resources.add(RestResponseFilter.class);

@@ -16,26 +16,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.youngidea.m;
+package com.youngidea.pms.api.rest.m;
 
-import com.youngidea.pms.api.rest.model.request.ItemRequestModel;
+import com.youngidea.pms.api.rest.model.response.ItemStatusModel;
+import org.glassfish.jersey.server.validation.ValidationError;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import javax.validation.Valid;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import org.glassfish.jersey.server.validation.ValidationError;
 
 @Path("persons")
 @Produces(MediaType.APPLICATION_JSON)
@@ -78,7 +73,7 @@ public class Persons {
 //            @FormParam("name")
 ////            @Size(min = 2, max = 50, message = "{person.name.size}")
 //            String name) {
-    public Response createPerson(@Valid Person person) {    
+    public Response createPerson(@ValidPerson Person person) {
 //        Person person = new Person();
 //        person.setId(Integer.valueOf(id));
 //        person.setName(name);
@@ -89,7 +84,7 @@ public class Persons {
     @POST
     @Path("/testItem")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createItem(@Valid ItemRequestModel item) {
+    public Response createItem(@Valid ItemStatusModel item) {
         
         return Response.status(Response.Status.CREATED).entity(item).build();
     }
