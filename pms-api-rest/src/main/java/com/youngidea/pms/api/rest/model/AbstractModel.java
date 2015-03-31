@@ -5,12 +5,14 @@
  */
 package com.youngidea.pms.api.rest.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
  *
  * @author sean
  */
+@XmlRootElement
 public abstract class AbstractModel implements Serializable {
 
     private Long id;

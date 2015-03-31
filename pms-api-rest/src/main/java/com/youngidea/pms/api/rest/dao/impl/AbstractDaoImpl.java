@@ -16,10 +16,11 @@ public abstract class AbstractDaoImpl<E extends PMSEntity, RequestModel extends 
 
     protected abstract <C extends AbstractDozerConverter<E, RequestModel, ResponseModel>> C getConverter();
 
-    public void create(RequestModel requestModel) {
+    public ResponseModel create(RequestModel requestModel) {
         // let the child class does some shit ...
         //...
         getFacade().create(getConverter().convertBack(requestModel));
+        return getConverter().convertResToResp(requestModel);
     };
 
     public void edit(RequestModel requestModel) {

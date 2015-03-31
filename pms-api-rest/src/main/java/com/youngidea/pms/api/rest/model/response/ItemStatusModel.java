@@ -7,16 +7,28 @@ package com.youngidea.pms.api.rest.model.response;
 
 import com.youngidea.pms.api.rest.model.AbstractModel;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.*;
+
 /**
  *
  * @author sean
  */
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(name = "ItemStatus")
 public class ItemStatusModel extends AbstractModel {
     final static private String DEFAULT_IMG_URL = "blahblah";
-       
-    
+
+    @NotNull
+    @Size(min = 2, max = 50, message = "{person.name.size}")
+//    @XmlAttribute(name = "statusName")
     private String statusName;
+
+//    @XmlAttribute(name = "imageURL")
     private String imageURL = DEFAULT_IMG_URL;
+
+//    @XmlAttribute(name = "description")
     private String description;
     
         

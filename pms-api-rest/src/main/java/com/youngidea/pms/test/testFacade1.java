@@ -68,8 +68,8 @@ public class testFacade1 extends HttpServlet {
             item.setName("Latte");
 
             Item item2 = new Item();
-            item.setId(Long.parseLong("4"));
-            item.setName("Mocha");
+            item2.setId(Long.parseLong("4"));
+            item2.setName("Mocha");
 
 //            Category category = new Category();
 //            category.setId(new Long("1"));
@@ -81,7 +81,7 @@ public class testFacade1 extends HttpServlet {
 //            item.setCategory(category);
 //            genericFacade.create(category);
 //            itemFacade.edit(item);
-            items.add(item);
+//            items.add(item);
             items.add(item2);
             category.setItems(items);
 

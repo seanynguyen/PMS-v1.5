@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface AbstractDao<E extends PMSEntity, RequestModel extends AbstractModel, ResponseModel extends AbstractModel> {
 
-    public void create(RequestModel requestModel);
+    public ResponseModel create(RequestModel requestModel);
 
     public void edit(RequestModel requestModel);
 

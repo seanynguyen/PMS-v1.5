@@ -46,4 +46,9 @@ public abstract class AbstractDozerConverter<Entity extends PMSEntity, RequestMo
         return entity;
     }
 
+    @Override
+    public ResponseModel convertResToResp(RequestModel input) {
+        return convert(convertBack(input));
+    }
+
 }

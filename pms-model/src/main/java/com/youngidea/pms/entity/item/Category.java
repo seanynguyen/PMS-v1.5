@@ -5,9 +5,11 @@
  */
 package com.youngidea.pms.entity.item;
 
+import com.google.common.collect.Lists;
 import com.youngidea.pms.entity.PMSEntity;
 
 import javax.persistence.*;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -35,8 +37,8 @@ public class Category extends PMSEntity {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Category parentCategory;
 
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "category", fetch = FetchType.LAZY)
-    private List<Item> items;
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "category", fetch = FetchType.LAZY)
+    private List<Item> items = Lists.newArrayList();
     
     public String getName() {
         return name;
@@ -74,8 +76,28 @@ public class Category extends PMSEntity {
         return items;
     }
 
+    public void addItem(Item item) {
+        items.add(item);
+        item.setCategory(this);
+    }
+
+    public void removeItem(Item item) {
+        items.remove(item);
+        item.setCategory(null);
+    }
+
     public void setItems(List<Item> items) {
+        for (Item item : items) {
+            if (!this.items.contains(item)) {
+                item.setCategory(this);
+            }
+        }
+        for (Item currentItem : this.items) {
+            if (!items.contains(currentItem)) {
+                currentItem.setCategory(null);
+            }
+        }
         this.items = items;
     }
-    
+
 }

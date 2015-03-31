@@ -10,4 +10,6 @@ public interface IDozerConverter<PMSEntity, RequestModel, ResponseModel> {
 
     PMSEntity convertBack(RequestModel input);
 
+    ResponseModel convertResToResp(RequestModel input);
+
 }
