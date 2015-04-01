@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.youngidea.pms.api.rest.model.response;
+package com.youngidea.pms.api.rest.model;
 
 import com.youngidea.pms.api.rest.model.AbstractModel;
+import com.youngidea.pms.api.rest.model.validator.ValidStatus;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -17,6 +18,7 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(name = "ItemStatus")
+@ValidStatus
 public class ItemStatusModel extends AbstractModel {
     final static private String DEFAULT_IMG_URL = "blahblah";
 
@@ -34,6 +36,10 @@ public class ItemStatusModel extends AbstractModel {
         
     public ItemStatusModel() {
         
+    }
+
+    public ItemStatusModel(Long id) {
+        super(id);
     }
     
     public ItemStatusModel(String statusName, String decription, String imageURL) {

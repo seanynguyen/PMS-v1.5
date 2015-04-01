@@ -1,17 +1,14 @@
 package com.youngidea.pms.api.rest.dao.impl;
 
 import com.youngidea.pms.api.rest.dao.ItemStatusDao;
-import com.youngidea.pms.api.rest.dao.impl.converter.AbstractDozerConverter;
 import com.youngidea.pms.api.rest.dao.impl.converter.ItemStatusDozerConverter;
-import com.youngidea.pms.api.rest.model.response.ItemStatusModel;
+import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.entity.item.ItemStatus;
 import com.youngidea.pms.facade.GenericFacade;
-import org.apache.log4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import java.util.List;
 
 /**
  * Created by sean on 3/25/15.

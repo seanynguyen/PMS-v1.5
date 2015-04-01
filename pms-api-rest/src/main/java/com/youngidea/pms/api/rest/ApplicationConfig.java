@@ -21,6 +21,7 @@ package com.youngidea.pms.api.rest;
 
 
 import com.youngidea.pms.api.rest.service.impl.ItemStatusServiceImpl;
+import com.youngidea.pms.api.rest.service.impl.ItemStatusServiceImpl2;
 import org.glassfish.jersey.server.validation.internal.ValidationExceptionMapper;
 
 import javax.ws.rs.ApplicationPath;
@@ -46,7 +47,8 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(ValidationExceptionMapper.class);
-//        resources.add(com.youngidea.pms.api.rest.service.impl.ValidationExceptionMapper.class);
+        resources.add(com.youngidea.pms.api.rest.config.ValidationExceptionMapper.class);
+        resources.add(ItemStatusServiceImpl2.class);
 //        resources.add(FileServiceREST.class);
 //        resources.add(OrderServiceREST.class);
 //        resources.add(RestResponseFilter.class);

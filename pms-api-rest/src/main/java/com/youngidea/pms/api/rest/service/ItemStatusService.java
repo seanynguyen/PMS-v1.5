@@ -1,7 +1,7 @@
 package com.youngidea.pms.api.rest.service;
 
 import com.youngidea.pms.api.rest.dao.AbstractDao;
-import com.youngidea.pms.api.rest.model.response.ItemStatusModel;
+import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.entity.item.ItemStatus;
 
 /**

@@ -1,7 +1,7 @@
 package com.youngidea.pms.api.rest.dao.impl.converter;
 
 import com.google.common.collect.Lists;
-import com.youngidea.pms.api.rest.model.response.ItemStatusModel;
+import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.entity.item.ItemStatus;
 
 import java.util.List;

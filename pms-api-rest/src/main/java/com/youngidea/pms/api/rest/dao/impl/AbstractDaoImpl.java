@@ -5,6 +5,7 @@ import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.entity.PMSEntity;
 import com.youngidea.pms.facade.GenericFacade;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public abstract class AbstractDaoImpl<E extends PMSEntity, RequestModel extends 
 
     protected abstract <C extends AbstractDozerConverter<E, RequestModel, ResponseModel>> C getConverter();
 
-    public ResponseModel create(RequestModel requestModel) {
+    public ResponseModel create(@Valid RequestModel requestModel) {
         // let the child class does some shit ...
         //...
         getFacade().create(getConverter().convertBack(requestModel));

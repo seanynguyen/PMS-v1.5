@@ -1,6 +1,6 @@
 package com.youngidea.pms.api.rest.dao;
 
-import com.youngidea.pms.api.rest.model.response.ItemStatusModel;
+import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.entity.item.ItemStatus;
 
 /**

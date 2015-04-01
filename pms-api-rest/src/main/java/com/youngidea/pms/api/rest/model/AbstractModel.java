@@ -12,8 +12,7 @@ import java.io.Serializable;
  *
  * @author sean
  */
-@XmlRootElement
-public abstract class AbstractModel implements Serializable {
+public class AbstractModel implements Serializable {
 
     private Long id;
 

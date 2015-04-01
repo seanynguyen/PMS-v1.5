@@ -16,9 +16,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.youngidea.pms.api.rest.m;
+package com.youngidea.pms.api.rest.service.impl;
 
-import com.youngidea.pms.api.rest.model.response.ItemStatusModel;
+import com.youngidea.pms.api.rest.dao.impl.ItemStatusDaoImpl;
+import com.youngidea.pms.api.rest.m.Person;
+import com.youngidea.pms.api.rest.m.ValidPerson;
+import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import org.glassfish.jersey.server.validation.ValidationError;
 
 import javax.validation.Valid;
@@ -32,9 +35,9 @@ import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-@Path("persons")
+@Path("/persons")
 @Produces(MediaType.APPLICATION_JSON)
-public class Persons {
+public class ItemStatusServiceImpl2 extends ItemStatusDaoImpl{
 
     private static final ConcurrentMap<String, Person> persons = new ConcurrentHashMap<String, Person>();
 
@@ -73,19 +76,30 @@ public class Persons {
 //            @FormParam("name")
 ////            @Size(min = 2, max = 50, message = "{person.name.size}")
 //            String name) {
-    public Response createPerson(@ValidPerson Person person) {
+    public Response createPerson(@Valid @ValidPerson Person person) {
 //        Person person = new Person();
 //        person.setId(Integer.valueOf(id));
 //        person.setName(name);
         persons.put(person.getId().toString(), person);
         return Response.status(Response.Status.CREATED).entity(person).build();
     }
+
+//    @POST
+//    @Path("create1")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public ItemStatusModel create(@Valid ItemStatusModel itemStatusModel) {
+////        Person person = new Person();
+////        person.setId(Integer.valueOf(id));
+////        person.setName(name);
+////        persons.put(person.getId().toString(), person);
+////        return Response.status(Response.Status.CREATED).entity(person).build();
+//        return super.create(itemStatusModel);
+//    }
     
     @POST
     @Path("/testItem")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createItem(@Valid ItemStatusModel item) {
-        
         return Response.status(Response.Status.CREATED).entity(item).build();
     }
     

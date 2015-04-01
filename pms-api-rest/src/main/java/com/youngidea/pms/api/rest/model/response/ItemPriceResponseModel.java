@@ -6,6 +6,7 @@
 package com.youngidea.pms.api.rest.model.response;
 
 import com.youngidea.pms.api.rest.model.AbstractModel;
+import com.youngidea.pms.api.rest.model.ItemStatusModel;
 
 /**
  *
