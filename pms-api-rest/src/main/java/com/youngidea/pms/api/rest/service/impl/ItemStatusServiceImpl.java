@@ -2,6 +2,7 @@ package com.youngidea.pms.api.rest.service.impl;
 
 import com.youngidea.pms.api.rest.dao.impl.ItemStatusDaoImpl;
 import com.youngidea.pms.api.rest.model.ItemStatusModel;
+import com.youngidea.pms.api.rest.model.validator.ValidStatus;
 import com.youngidea.pms.api.rest.service.ItemStatusService;
 
 import javax.validation.Valid;
@@ -19,7 +20,8 @@ public class ItemStatusServiceImpl extends ItemStatusDaoImpl implements ItemStat
 
     @POST
     @Consumes({"application/xml", "application/json"})
-    public Response createStatus(@Valid ItemStatusModel itemStatusModel) {
+    public Response createStatus(@Valid @ValidStatus ItemStatusModel itemStatusModel) {
+
         return Response.status(Response.Status.CREATED).entity(super.create(itemStatusModel)).build();
     };
 
@@ -43,7 +45,6 @@ public class ItemStatusServiceImpl extends ItemStatusDaoImpl implements ItemStat
 //    public List<ItemStatusModel> findAll() {
 //
 //    };
-
 
     @GET
     @Path("{id}")

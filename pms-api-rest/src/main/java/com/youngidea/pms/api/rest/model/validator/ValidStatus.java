@@ -18,7 +18,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 @Constraint(validatedBy = ItemStatusValidator.class)
 public @interface ValidStatus {
-    String message() default "{Person}";
+    String message() default "Duplicated !";
 
     Class<?>[] groups() default {};
 

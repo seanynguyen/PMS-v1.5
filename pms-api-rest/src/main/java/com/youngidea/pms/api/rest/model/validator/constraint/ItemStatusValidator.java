@@ -5,6 +5,7 @@ import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.api.rest.model.validator.ValidStatus;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -23,7 +24,7 @@ public class ItemStatusValidator implements ConstraintValidator<ValidStatus, Ite
 
     @Override
     public boolean isValid(ItemStatusModel itemStatusModel, ConstraintValidatorContext constraintValidatorContext) {
-        return false;
+        return true;
     }
 
 }

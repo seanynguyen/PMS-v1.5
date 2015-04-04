@@ -23,7 +23,7 @@ public class ItemStatusModel extends AbstractModel {
     final static private String DEFAULT_IMG_URL = "blahblah";
 
     @NotNull
-    @Size(min = 2, max = 50, message = "{person.name.size}")
+    @Size(min = 2, max = 10, message = "{person.name.size}") // dua ra property file min, max
 //    @XmlAttribute(name = "statusName")
     private String statusName;
 
