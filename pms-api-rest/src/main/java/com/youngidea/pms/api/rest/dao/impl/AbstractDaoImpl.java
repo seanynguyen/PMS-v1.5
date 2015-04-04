@@ -17,19 +17,22 @@ public abstract class AbstractDaoImpl<E extends PMSEntity, RequestModel extends 
 
     protected abstract <C extends AbstractDozerConverter<E, RequestModel, ResponseModel>> C getConverter();
 
-    public ResponseModel create(@Valid RequestModel requestModel) {
+    public ResponseModel create(RequestModel requestModel) {
         // let the child class does some shit ...
         //...
         getFacade().create(getConverter().convertBack(requestModel));
         return getConverter().convertResToResp(requestModel);
     };
 
-    public void edit(RequestModel requestModel) {
-
+    public ResponseModel edit(RequestModel requestModel) {
+        getFacade().edit(getConverter().convertBack(requestModel));
+        return getConverter().convertResToResp(requestModel);
     };
 
-    public void remove(RequestModel requestModel) {
-
+    public ResponseModel remove(Object id) {
+        E tobeRemoved = getFacade().find(id);
+        getFacade().remove(tobeRemoved);
+        return getConverter().convert(tobeRemoved);
     };
 
     public List<ResponseModel> findAll() {

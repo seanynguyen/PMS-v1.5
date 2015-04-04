@@ -14,6 +14,10 @@
         <class-a>com.youngidea.pms.entity.item.ItemStatus</class-a>
         <class-b>com.youngidea.pms.api.rest.model.ItemStatusModel</class-b>
         <field>
+            <a>id</a>
+            <b>id</b>
+        </field>
+        <field>
             <a>name</a>
             <b>statusName</b>
         </field>

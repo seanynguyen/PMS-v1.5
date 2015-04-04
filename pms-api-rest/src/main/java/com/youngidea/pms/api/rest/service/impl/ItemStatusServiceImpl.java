@@ -2,8 +2,10 @@ package com.youngidea.pms.api.rest.service.impl;
 
 import com.youngidea.pms.api.rest.dao.impl.ItemStatusDaoImpl;
 import com.youngidea.pms.api.rest.model.ItemStatusModel;
+import com.youngidea.pms.api.rest.model.error.NotFoundError;
 import com.youngidea.pms.api.rest.model.validator.ValidStatus;
 import com.youngidea.pms.api.rest.service.ItemStatusService;
+import com.youngidea.pms.api.rest.ultility.RestApiHelper;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
@@ -21,25 +23,36 @@ public class ItemStatusServiceImpl extends ItemStatusDaoImpl implements ItemStat
     @POST
     @Consumes({"application/xml", "application/json"})
     public Response createStatus(@Valid @ValidStatus ItemStatusModel itemStatusModel) {
-
-        return Response.status(Response.Status.CREATED).entity(super.create(itemStatusModel)).build();
+        return RestApiHelper.buildResponse(Response.Status.CREATED, super.create(itemStatusModel));
     };
 
-    @GET
-    @Path("/testArrayList")
-    public Response testArrayList() {
-        return Response.status(Response.Status.FOUND).entity(new ArrayList()).build();
-    }
+//    @GET
+//    @Path("/testArrayList")
+//    public Response testArrayList() {
+//        return Response.status(Response.Status.FOUND).entity(new ArrayList()).build();
+//    }
 
-//    @Override
-//    public void edit(ItemStatusModel itemStatusModel) {
+    @PUT
+    @Path("{id}")
+    @Consumes({"application/xml", "application/json"})
+    public Response editStatus(ItemStatusModel itemStatusModel, @PathParam("id") Long id) {
+        if (super.find(id) == null) {
+            return RestApiHelper.buildResponse(Response.Status.NOT_FOUND,
+                    new NotFoundError(ItemStatusModel.class.getSimpleName(), id));
+        }
+        itemStatusModel.setId(id);
+        return RestApiHelper.buildResponse(Response.Status.OK, super.edit(itemStatusModel));
+    };
 //
-//    };
-//
-//    @Override
-//    public void remove(ItemStatusModel itemStatusModel) {
-//
-//    };
+    @DELETE
+    @Path("{id}")
+    public Response removeStatus(@PathParam("id") Long id) {
+        if (super.find(id) == null) {
+            return RestApiHelper.buildResponse(Response.Status.NOT_FOUND,
+                    new NotFoundError(ItemStatusModel.class.getSimpleName(), id));
+        }
+        return RestApiHelper.buildResponse(Response.Status.OK, super.remove(id));
+    };
 //
 //    @Override
 //    public List<ItemStatusModel> findAll() {
@@ -49,8 +62,12 @@ public class ItemStatusServiceImpl extends ItemStatusDaoImpl implements ItemStat
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response find(@Pattern(regexp = "[0-9]+", message = "{person.id.pattern}") @PathParam("id")
-                                    Long id) {
+    public Response find(@PathParam("id")
+                             Long id) {
+        if (super.find(id) == null) {
+            return RestApiHelper.buildResponse(Response.Status.NOT_FOUND,
+                    new NotFoundError(ItemStatusModel.class.getSimpleName(), id));
+        }
         return Response.status(Response.Status.FOUND).entity(super.find(id)).build();
     };
 

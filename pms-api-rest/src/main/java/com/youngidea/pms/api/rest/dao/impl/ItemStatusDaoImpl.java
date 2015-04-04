@@ -5,6 +5,7 @@ import com.youngidea.pms.api.rest.dao.impl.converter.ItemStatusDozerConverter;
 import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.entity.item.ItemStatus;
 import com.youngidea.pms.facade.GenericFacade;
+import com.youngidea.pms.facade.ItemStatusFacade;
 import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
@@ -20,11 +21,11 @@ public class ItemStatusDaoImpl extends AbstractDaoImpl<ItemStatus, ItemStatusMod
     private static final ItemStatusDozerConverter itemStatusDozerConverter = new ItemStatusDozerConverter();
 
     @EJB
-    private GenericFacade<ItemStatus> genericFacade;
+    private ItemStatusFacade itemStatusFacade;
 
     @Override
-    protected GenericFacade<ItemStatus> getFacade() {
-        return genericFacade;
+    protected ItemStatusFacade getFacade() {
+        return itemStatusFacade;
     }
 
     @Override
@@ -41,21 +42,6 @@ public class ItemStatusDaoImpl extends AbstractDaoImpl<ItemStatus, ItemStatusMod
 //    public void edit(ItemStatusModel itemStatusModel) {
 //
 //    }
-//
-//    @Override
-//    public void remove(ItemStatusModel itemStatusModel) {
-//
-//    }
-//
-//    @Override
-//    public List<ItemStatusModel> findAll() {
-//        return null;
-//    }
-//
-    @Override
-    public ItemStatusModel find(Object id) {
-        return itemStatusDozerConverter.convert(genericFacade.find(ItemStatus.class, id));
-    }
 //
 
 }

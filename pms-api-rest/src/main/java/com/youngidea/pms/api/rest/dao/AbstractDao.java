@@ -11,11 +11,11 @@ import java.util.List;
  */
 public interface AbstractDao<E extends PMSEntity, RequestModel extends AbstractModel, ResponseModel extends AbstractModel> {
 
-    public ResponseModel create(@Valid RequestModel requestModel);
+    public ResponseModel create(RequestModel requestModel);
 
-    public void edit(RequestModel requestModel);
+    public ResponseModel edit(RequestModel requestModel);
 
-    public void remove(RequestModel requestModel);
+    public ResponseModel remove(Object id);
 
     public List<ResponseModel> findAll();
 
