@@ -1,11 +1,10 @@
 package com.youngidea.pms.api.rest.dao.impl;
 
-import com.youngidea.pms.api.rest.dao.impl.converter.AbstractDozerConverter;
+import com.youngidea.pms.api.rest.dao.impl.converter.AbstractConverter;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.entity.PMSEntity;
 import com.youngidea.pms.facade.GenericFacade;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -15,7 +14,7 @@ public abstract class AbstractDaoImpl<E extends PMSEntity, RequestModel extends 
 
     protected abstract <Facade extends GenericFacade<E>> Facade getFacade();
 
-    protected abstract <C extends AbstractDozerConverter<E, RequestModel, ResponseModel>> C getConverter();
+    protected abstract <C extends AbstractConverter<E, RequestModel, ResponseModel>> C getConverter();
 
     public ResponseModel create(RequestModel requestModel) {
         // let the child class does some shit ...

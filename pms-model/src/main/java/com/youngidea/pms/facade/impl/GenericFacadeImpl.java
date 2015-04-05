@@ -42,10 +42,7 @@ public class GenericFacadeImpl<E> implements GenericFacade<E>{
 
     @Override
     public void create(E entity) {
-//            LOGGER.info(entity.getClass().toString());
-        System.out.println(entity.getClass().toString());
-            em.persist(entity);
-
+        em.persist(entity);
     }
 
     @Override
@@ -107,6 +104,5 @@ public class GenericFacadeImpl<E> implements GenericFacade<E>{
     public <T> T find(Class<T> entityClass, Object id) {
         return em.find(entityClass, id);
     }
-
 
 }

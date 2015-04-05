@@ -20,15 +20,79 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.youngidea</groupId>
             <artifactId>pms-model</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!-- dozerBeanMapping.xml -->
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>5.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xmlbeans</groupId>
+            <artifactId>xmlbeans</artifactId>
+            <version>2.4.0</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- Jersey -->
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-multipart</artifactId>
+            <version>2.14</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>2.14</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-bean-validation</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.owlike</groupId>
+            <artifactId>genson</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.glassfish.maven.plugin</groupId>
+                <artifactId>maven-glassfish-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <glassfishDirectory>${local.glassfish.home}</glassfishDirectory>
+                    <user>admin</user>
+                    <passwordFile>${local.glassfish.passfile}</passwordFile>
+                    <domain>
+                        <name>domain1</name>
+                        <httpPort>8080</httpPort>
+                        <adminPort>4848</adminPort>
+                    </domain>
+                    <components>
+                        <component>
+                            <name>${project.artifactId}</name>
+                            <artifact>target/${project.build.finalName}.war</artifact>
+                        </component>
+                    </components>
+                    <debug>true</debug>
+                    <terse>false</terse>
+                    <echo>true</echo>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

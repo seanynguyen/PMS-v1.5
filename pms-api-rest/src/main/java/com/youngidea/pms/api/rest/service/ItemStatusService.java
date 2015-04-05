@@ -4,8 +4,15 @@ import com.youngidea.pms.api.rest.dao.AbstractDao;
 import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.entity.item.ItemStatus;
 
+import javax.ejb.Local;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Response;
+
 /**
  * Created by sean on 3/31/15.
  */
-public interface ItemStatusService extends AbstractDao<ItemStatus, ItemStatusModel, ItemStatusModel> {
+@Local
+public interface ItemStatusService extends RestCRUIDService<ItemStatusModel> {
+
+
 }
