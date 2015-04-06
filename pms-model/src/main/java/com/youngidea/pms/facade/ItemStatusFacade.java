@@ -8,6 +8,6 @@ import javax.ejb.Local;
  * Created by sean on 4/4/15.
  */
 @Local
-public interface ItemStatusFacade extends GenericFacade<ItemStatus>{
+public interface ItemStatusFacade extends AbstractFacade<ItemStatus>{
 
 }

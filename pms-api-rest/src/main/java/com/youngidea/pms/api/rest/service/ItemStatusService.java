@@ -14,5 +14,6 @@ import javax.ws.rs.core.Response;
 @Local
 public interface ItemStatusService extends RestCRUIDService<ItemStatusModel> {
 
-
+    Response find(@PathParam("id")
+                  Long id);
 }

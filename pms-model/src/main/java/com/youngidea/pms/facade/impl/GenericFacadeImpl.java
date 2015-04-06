@@ -5,6 +5,8 @@
  */
 package com.youngidea.pms.facade.impl;
 
+import com.youngidea.pms.entity.PMSEntity;
+import com.youngidea.pms.facade.AbstractFacade;
 import com.youngidea.pms.facade.GenericFacade;
 import org.slf4j.Logger;
 
@@ -18,7 +20,7 @@ import java.util.List;
  * @author sean
  */
 @Stateless
-public class GenericFacadeImpl<E> implements GenericFacade<E>{
+public class GenericFacadeImpl<E extends PMSEntity> implements GenericFacade<E>, AbstractFacade<E> {
     private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(GenericFacadeImpl.class);
 
     @PersistenceContext(unitName = "PMS-v1PU")
@@ -63,6 +65,11 @@ public class GenericFacadeImpl<E> implements GenericFacade<E>{
 
     public E find(Object id) {
         return getEntityManager().find(entityClass, id);
+    }
+
+    @Override
+    public Class<E> getEntityClass() {
+        return this.entityClass;
     }
 
     public List<E> findRange(int[] range) {

@@ -7,17 +7,20 @@ import org.dozer.DozerBeanMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 /**
  * Created by sean on 3/26/15.
  */
-public abstract class AbstractConverter<Entity extends PMSEntity, RequestModel extends AbstractModel, ResponseModel extends AbstractModel>
+public class AbstractConverter<Entity extends PMSEntity, RequestModel extends AbstractModel, ResponseModel extends AbstractModel>
         implements IDozerConverter<Entity, RequestModel, ResponseModel>{
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractConverter.class);
 
-    private static final List<String> mappingFilesNames = Lists.newArrayList();
+    private static final String[] mappingFilesNamess = {"dozer.xml"};
+
+//    private static final List<String> mappingFilesNames = Lists.newArrayList();
 
     public static final DozerBeanMapper mapper = new DozerBeanMapper();
 
@@ -25,10 +28,9 @@ public abstract class AbstractConverter<Entity extends PMSEntity, RequestModel e
 
     private Class<ResponseModel> responseModelClass;
 
-    public AbstractConverter(Class<ResponseModel> responseModelClass, Class<Entity> entityClass, Collection<String> mappingFileNames) {
+    public AbstractConverter(Class<ResponseModel> responseModelClass, Class<Entity> entityClass) {
 //        BasicConfigurator.configure();
-        this.mappingFilesNames.addAll(mappingFileNames);
-        mapper.setMappingFiles(this.mappingFilesNames);
+        mapper.setMappingFiles(Arrays.asList(mappingFilesNamess));
         this.entityClass = entityClass;
         this.responseModelClass = responseModelClass;
     }

@@ -1,6 +1,7 @@
 package com.youngidea.pms.api.rest.dao.impl;
 
 import com.youngidea.pms.api.rest.dao.ItemStatusDao;
+import com.youngidea.pms.api.rest.dao.impl.converter.AbstractConverter;
 import com.youngidea.pms.api.rest.dao.impl.converter.ItemStatusConverter;
 import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.entity.item.ItemStatus;
@@ -16,11 +17,13 @@ import javax.ejb.Stateless;
 @Stateless
 public class ItemStatusDaoImpl extends AbstractDaoImpl<ItemStatus, ItemStatusModel, ItemStatusModel> implements ItemStatusDao {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ItemStatusDaoImpl.class);
-    
-    private static final ItemStatusConverter ITEM_STATUS_CONVERTER = new ItemStatusConverter();
 
     @EJB
     private ItemStatusFacade itemStatusFacade;
+
+    public ItemStatusDaoImpl() {
+        super(ItemStatusModel.class);
+    }
 
     @Override
     protected ItemStatusFacade getFacade() {
@@ -29,7 +32,7 @@ public class ItemStatusDaoImpl extends AbstractDaoImpl<ItemStatus, ItemStatusMod
 
     @Override
     protected ItemStatusConverter getConverter() {
-        return ITEM_STATUS_CONVERTER;
+        return new ItemStatusConverter();
     }
 
 //    @Override
