@@ -1,8 +1,6 @@
 package com.youngidea.pms.api.rest.dao.impl;
 
 import com.youngidea.pms.api.rest.dao.ItemStatusDao;
-import com.youngidea.pms.api.rest.dao.impl.converter.AbstractConverter;
-import com.youngidea.pms.api.rest.dao.impl.converter.ItemStatusConverter;
 import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.entity.item.ItemStatus;
 import com.youngidea.pms.facade.ItemStatusFacade;
@@ -32,10 +30,6 @@ public class ItemStatusDaoImpl extends AbstractDaoImpl<ItemStatus, ItemStatusMod
         return itemStatusFacade;
     }
 
-    @Override
-    protected ItemStatusConverter getConverter() {
-        return new ItemStatusConverter();
-    }
 
 //    @Override
 //    public void create(ItemStatusModel itemStatusModel) {
