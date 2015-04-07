@@ -18,6 +18,8 @@ import javax.ejb.Stateless;
 public class ItemStatusDaoImpl extends AbstractDaoImpl<ItemStatus, ItemStatusModel, ItemStatusModel> implements ItemStatusDao {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ItemStatusDaoImpl.class);
 
+//    private AbstractConverter<ItemStatus, ItemStatusModel, ItemStatusModel> CONVERTER;
+
     @EJB
     private ItemStatusFacade itemStatusFacade;
 

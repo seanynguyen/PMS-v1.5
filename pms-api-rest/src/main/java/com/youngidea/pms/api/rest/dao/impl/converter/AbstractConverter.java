@@ -20,8 +20,6 @@ public class AbstractConverter<Entity extends PMSEntity, RequestModel extends Ab
 
     private static final String[] mappingFilesNamess = {"dozer.xml"};
 
-//    private static final List<String> mappingFilesNames = Lists.newArrayList();
-
     public static final DozerBeanMapper mapper = new DozerBeanMapper();
 
     private Class<Entity> entityClass;
@@ -34,6 +32,7 @@ public class AbstractConverter<Entity extends PMSEntity, RequestModel extends Ab
         this.entityClass = entityClass;
         this.responseModelClass = responseModelClass;
     }
+
 
     @Override
     public ResponseModel convert(Entity input) {
@@ -53,7 +52,4 @@ public class AbstractConverter<Entity extends PMSEntity, RequestModel extends Ab
         return convert(convertBack(input));
     }
 
-    public Class<ResponseModel> getResponseModelClass() {
-        return this.responseModelClass;
-    }
 }
