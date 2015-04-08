@@ -5,12 +5,14 @@ import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.api.rest.service.ItemStatusService;
 
 import javax.ejb.EJB;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.Path;
 
 /**
  * Created by sean on 3/31/15.
  */
+@LocalBean
 @Path("/status")
 @Stateless
 public class ItemStatusServiceImpl extends RestCRUIDServiceImpl<ItemStatusDao, ItemStatusModel> implements ItemStatusService{

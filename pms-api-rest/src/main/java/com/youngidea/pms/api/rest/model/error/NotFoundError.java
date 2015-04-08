@@ -10,20 +10,12 @@ import java.util.Properties;
  * Created by sean on 4/4/15.
  */
 public class NotFoundError {
-//    private static final String PROP_FILE_NAME = "config.properties";
     private static Logger LOGGER = LoggerFactory.getLogger(NotFoundError.class);
-//    private Properties prop;
 
     private String message;
     private Object invalidValue;
 
     public NotFoundError(String modelName, Object invalidValue) {
-//        prop = new Properties();
-//        try {
-//            prop.load(getClass().getClassLoader().getResourceAsStream(PROP_FILE_NAME));
-//        } catch (IOException e) {
-//            LOGGER.error(e.getMessage());
-//        }
         this.message = getMessage(modelName, invalidValue);
         this.invalidValue = invalidValue;
     }

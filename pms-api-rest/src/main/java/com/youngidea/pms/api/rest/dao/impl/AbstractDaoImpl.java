@@ -1,6 +1,6 @@
 package com.youngidea.pms.api.rest.dao.impl;
 
-import com.youngidea.pms.api.rest.dao.impl.converter.IDozerConverter;
+import com.youngidea.pms.api.rest.dao.impl.converter.GenericConverter;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.entity.PMSEntity;
 import com.youngidea.pms.facade.AbstractFacade;
@@ -14,7 +14,7 @@ import java.util.List;
 public abstract class AbstractDaoImpl<E extends PMSEntity, RequestModel extends AbstractModel, ResponseModel extends AbstractModel>  {
 
    @EJB
-   private IDozerConverter<E, RequestModel, ResponseModel> CONVERTER;
+   private GenericConverter<E, RequestModel, ResponseModel> genericConverter;
 
     protected abstract <Facade extends AbstractFacade<E>> Facade getFacade();
 
@@ -34,19 +34,19 @@ public abstract class AbstractDaoImpl<E extends PMSEntity, RequestModel extends 
     public ResponseModel create(RequestModel requestModel) {
         // let the child class does some shit ...
         //...
-        getFacade().create(CONVERTER.convertBack(requestModel, getFacade().getEntityClass()));
-        return CONVERTER.convertResToResp(requestModel);
+        getFacade().create(genericConverter.convertBack(requestModel, getFacade().getEntityClass()));
+        return genericConverter.convertResToResp(requestModel);
     };
 
     public ResponseModel edit(RequestModel requestModel) {
-        getFacade().edit(CONVERTER.convertBack(requestModel, getFacade().getEntityClass()));
-        return CONVERTER.convertResToResp(requestModel);
+        getFacade().edit(genericConverter.convertBack(requestModel, getFacade().getEntityClass()));
+        return genericConverter.convertResToResp(requestModel);
     };
 
     public ResponseModel remove(Object id) {
         E tobeRemoved = getFacade().find(id);
         getFacade().remove(tobeRemoved);
-        return CONVERTER.convert(tobeRemoved, responseModelClass);
+        return genericConverter.convert(tobeRemoved, responseModelClass);
     };
 
     public List<ResponseModel> findAll() {
@@ -55,6 +55,6 @@ public abstract class AbstractDaoImpl<E extends PMSEntity, RequestModel extends 
     };
 
     public ResponseModel find(Object id) {
-        return CONVERTER.convert(getFacade().find(id), responseModelClass);
+        return genericConverter.convert(getFacade().find(id), responseModelClass);
     };
 }

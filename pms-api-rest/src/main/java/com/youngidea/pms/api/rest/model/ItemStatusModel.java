@@ -9,6 +9,7 @@ import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.api.rest.model.validator.ValidStatus;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.*;
 
@@ -16,24 +17,18 @@ import javax.xml.bind.annotation.*;
  *
  * @author sean
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(name = "ItemStatus")
-@ValidStatus
 public class ItemStatusModel extends AbstractModel {
-    final static private String DEFAULT_IMG_URL = "blahblah";
+    final static private String DEFAULT_IMG_URL = "/home/Pictures/pms/status/shit.png";
 
     @NotNull
-    @Size(min = 2, max = 10, message = "{person.name.size}") // dua ra property file min, max
-//    @XmlAttribute(name = "statusName")
+    @Size(min = 2, max = 15, message = "{status.name.size.message}") // dua ra property file min, max
     private String statusName;
 
-//    @XmlAttribute(name = "imageURL")
+//    @Pattern(regexp = "^(?:[\\w]\\:|\\\\)(\\\\[a-z_\\-\\s0-9\\.]+)+\\.(txt|gif|pdf|doc|docx|xls|xlsx|jpg|png)$", message = "{status.image.url.message}")
     private String imageURL = DEFAULT_IMG_URL;
 
-//    @XmlAttribute(name = "description")
     private String description;
-    
-        
+
     public ItemStatusModel() {
         
     }

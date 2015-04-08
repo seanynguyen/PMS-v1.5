@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 /**
  * Created by sean on 4/4/15.
  */
-public abstract class RestCRUIDServiceImpl<Dao extends AbstractDao, Model extends AbstractModel> {
+public abstract class RestCRUIDServiceImpl<Dao extends AbstractDao, Model extends AbstractModel> implements RestCRUIDService<Model>{
 
     protected abstract Dao getDao();
 

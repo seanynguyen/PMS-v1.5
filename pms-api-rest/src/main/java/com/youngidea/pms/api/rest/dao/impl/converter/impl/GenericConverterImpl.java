@@ -1,5 +1,6 @@
-package com.youngidea.pms.api.rest.dao.impl.converter;
+package com.youngidea.pms.api.rest.dao.impl.converter.impl;
 
+import com.youngidea.pms.api.rest.dao.impl.converter.GenericConverter;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.entity.PMSEntity;
 import org.apache.log4j.BasicConfigurator;
@@ -16,7 +17,7 @@ import java.util.Arrays;
  */
 @Stateless
 public class GenericConverterImpl<Entity extends PMSEntity, RequestModel extends AbstractModel, ResponseModel extends AbstractModel>
-        implements IDozerConverter<Entity, RequestModel, ResponseModel>{
+        implements GenericConverter<Entity, RequestModel, ResponseModel> {
     private static final Logger LOGGER = LoggerFactory.getLogger(GenericConverterImpl.class);
 
     private static final String[] DEFAULT_MAPPING_FILE_NAMES = {"dozer.xml"};
@@ -36,9 +37,7 @@ public class GenericConverterImpl<Entity extends PMSEntity, RequestModel extends
 
     @Override
     public ResponseModel convert(Entity input, Class<ResponseModel> responseModelClass) {
-        ResponseModel responseModel =
-                (ResponseModel) mapper.map(input, responseModelClass);
-        return responseModel;
+        return input != null ? (ResponseModel) mapper.map(input, responseModelClass) : null;
     }
 
     @Override

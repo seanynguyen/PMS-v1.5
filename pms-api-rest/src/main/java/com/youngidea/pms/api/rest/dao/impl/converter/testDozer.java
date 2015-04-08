@@ -44,14 +44,14 @@ public class testDozer extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 //            BasicConfigurator.configure();
-            ItemStatusConverterImpl itemStatusConverter = new ItemStatusConverterImpl();
-            ItemStatus itemStatus = genericFacade.find(ItemStatus.class, new Long("1"));
-//
-//            out.println(itemStatusDozerConverter.convert(itemStatus).getStatusName());
-//            ItemStatusModel itemStatusModel = new ItemStatusModel("Blended","Ice Blended","shit");
-            out.println(itemStatusDao.find(new Long("2")));
-//            out.println(itemStatusConverter.convert(genericFacade.find(ItemStatus.class, new Long("2"))));
-//            out.println(genericFacade.find(ItemStatus.class, new Long("2")).getName());
+//            ItemStatusConverterImpl itemStatusConverter = new ItemStatusConverterImpl();
+//            ItemStatus itemStatus = genericFacade.find(ItemStatus.class, new Long("1"));
+////
+////            out.println(itemStatusDozerConverter.convert(itemStatus).getStatusName());
+////            ItemStatusModel itemStatusModel = new ItemStatusModel("Blended","Ice Blended","shit");
+//            out.println(itemStatusDao.find(new Long("2")));
+////            out.println(itemStatusConverter.convert(genericFacade.find(ItemStatus.class, new Long("2"))));
+////            out.println(genericFacade.find(ItemStatus.class, new Long("2")).getName());
             out.println("FUCK THAT SHIT !!");
             out.println("OK");
         }
