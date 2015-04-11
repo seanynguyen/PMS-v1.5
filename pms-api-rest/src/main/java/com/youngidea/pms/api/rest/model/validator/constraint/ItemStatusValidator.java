@@ -14,8 +14,8 @@ import javax.validation.ConstraintValidatorContext;
  */
 public class ItemStatusValidator implements ConstraintValidator<ValidStatus, ItemStatusModel> {
 
-    @EJB
-    private ItemStatusDao itemStatusDao;
+//    @EJB
+//    private ItemStatusDao itemStatusDao;
 
     @Override
     public void initialize(ValidStatus validStatus) {
@@ -24,6 +24,7 @@ public class ItemStatusValidator implements ConstraintValidator<ValidStatus, Ite
 
     @Override
     public boolean isValid(ItemStatusModel itemStatusModel, ConstraintValidatorContext constraintValidatorContext) {
+//        System.out.println(itemStatusDao.findAll());
         return true;
     }
 

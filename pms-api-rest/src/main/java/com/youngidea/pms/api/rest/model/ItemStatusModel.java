@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.*;
  *
  * @author sean
  */
+@ValidStatus
 public class ItemStatusModel extends AbstractModel {
     final static private String DEFAULT_IMG_URL = "/home/Pictures/pms/status/shit.png";
 

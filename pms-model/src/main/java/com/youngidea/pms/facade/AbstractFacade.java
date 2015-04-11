@@ -20,4 +20,8 @@ public interface AbstractFacade<E> {
     public E find(Object id);
 
     public Class<E> getEntityClass();
+
+    public List<E> findByName(String name);
+
+    public List<E> findRange(int[] range);
 }

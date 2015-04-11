@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -89,6 +90,13 @@ public class GenericFacadeImpl<E extends PMSEntity> implements GenericFacade<E>,
         return ((Long) q.getSingleResult()).intValue();
     }
 
+    public List<E> findByName(String name) {
+        Query q1 = em.createQuery("SELECT s FROM " + entityClass.getSimpleName()
+                + " s WHERE s.name= :name").setParameter("name", name);
+        return q1.getResultList();
+    }
+
+
     // To be used independently ---------------------------
 
     @Override
@@ -112,4 +120,8 @@ public class GenericFacadeImpl<E extends PMSEntity> implements GenericFacade<E>,
         return em.find(entityClass, id);
     }
 
+    public <T> List<T> findByName(String name, Class<T> entityClass) {
+        Query q1 = em.createQuery("SELECT s FROM " + entityClass.getSimpleName() + " s WHERE s.name= :name").setParameter("name", name);
+        return q1.getResultList();
+    }
 }

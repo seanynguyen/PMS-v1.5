@@ -9,6 +9,6 @@ import java.util.List;
  * Created by sean on 3/25/15.
  */
 @Local
-public interface ItemFacade extends GenericFacade<Item> {
+public interface ItemFacade extends AbstractFacade<Item> {
 
 }

@@ -30,16 +30,8 @@ public class ItemStatusDaoImpl extends AbstractDaoImpl<ItemStatus, ItemStatusMod
         return itemStatusFacade;
     }
 
-
-//    @Override
-//    public void create(ItemStatusModel itemStatusModel) {
-////        genericFacade.create(ItemStatusConverter.convertToEntity(itemStatusModel, null));
-//    }
-//
-//    @Override
-//    public void edit(ItemStatusModel itemStatusModel) {
-//
-//    }
-//
+    public boolean checkNameDuplication(String name) {
+        return itemStatusFacade.checkNameDuplication(name);
+    }
 
 }

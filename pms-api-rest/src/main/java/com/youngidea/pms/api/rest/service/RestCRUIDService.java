@@ -1,9 +1,11 @@
 package com.youngidea.pms.api.rest.service;
 
 import com.youngidea.pms.api.rest.model.AbstractModel;
+import com.youngidea.pms.api.rest.model.validator.ValidStatus;
 
 import javax.ejb.Local;
 import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
@@ -20,4 +22,9 @@ public interface RestCRUIDService<Model extends AbstractModel> {
     Response remove(@PathParam("id") Long id);
 
     Response find(@PathParam("id") Long id);
+
+    Response findAll();
+
+    Response findByPage(@Pattern(regexp = "[0-9]+", message = "{person.id.pattern}") @PathParam ("amountPerPage") String amountPerPage,
+                               @Pattern(regexp = "[0-9]+", message = "{person.id.pattern}") @PathParam("pageIndex") String pageIndex);
 }

@@ -3,10 +3,12 @@ package com.youngidea.pms.api.rest.service.impl;
 import com.youngidea.pms.api.rest.dao.AbstractDao;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.api.rest.model.error.NotFoundError;
+import com.youngidea.pms.api.rest.model.validator.ValidStatus;
 import com.youngidea.pms.api.rest.service.RestCRUIDService;
 import com.youngidea.pms.api.rest.ultility.RestApiHelper;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -56,6 +58,21 @@ public abstract class RestCRUIDServiceImpl<Dao extends AbstractDao, Model extend
                     new NotFoundError("Item Status", id));
         }
         return Response.status(Response.Status.FOUND).entity(getDao().find(id)).build();
+    };
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findAll() {
+        return RestApiHelper.buildResponse((Response.Status.FOUND), getDao().findAll());
+    };
+
+    @GET
+    @Path("{amountPerPage}/{pageIndex}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findByPage(@Pattern(regexp = "[0-9]+", message = "{person.id.pattern}") @PathParam ("amountPerPage") String amountPerPage,
+                               @Pattern(regexp = "[0-9]+", message = "{person.id.pattern}") @PathParam("pageIndex") String pageIndex) {
+        return Response.status(Response.Status.FOUND).entity(getDao().findByPage(Integer.parseInt(amountPerPage),
+                Integer.parseInt(pageIndex))).build();
     };
 
 }

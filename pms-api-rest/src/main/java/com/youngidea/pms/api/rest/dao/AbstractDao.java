@@ -20,4 +20,6 @@ public interface AbstractDao<E extends PMSEntity, RequestModel extends AbstractM
     public List<ResponseModel> findAll();
 
     public ResponseModel find(Object id);
+
+    public List<ResponseModel> findByPage(int amountPerPage, int pageIndex);
 }

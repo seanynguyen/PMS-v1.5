@@ -4,12 +4,13 @@
           xsi:schemaLocation="http://dozer.sourceforge.net
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
 
-    <!--<configuration>-->
-        <!--<stop-on-errors>true</stop-on-errors>-->
-        <!--<date-format>MM/dd/yyyy HH:mm</date-format>-->
-        <!--<wildcard>true</wildcard>-->
-    <!--</configuration>-->
+    <configuration>
+        <stop-on-errors>true</stop-on-errors>
+        <date-format>MM/dd/yyyy HH:mm</date-format>
+        <wildcard>true</wildcard>
+    </configuration>
 
+    <!-- Item Status mapping -->
     <mapping>
         <class-a>com.youngidea.pms.entity.item.ItemStatus</class-a>
         <class-b>com.youngidea.pms.api.rest.model.ItemStatusModel</class-b>
@@ -34,5 +35,7 @@
             <b>imageURL</b>
         </field>
     </mapping>
+
+    <!-- Item mapping -->
 
 </mappings>

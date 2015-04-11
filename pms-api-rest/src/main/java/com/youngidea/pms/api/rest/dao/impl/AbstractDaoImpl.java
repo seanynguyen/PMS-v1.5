@@ -1,5 +1,6 @@
 package com.youngidea.pms.api.rest.dao.impl;
 
+import com.google.common.collect.Lists;
 import com.youngidea.pms.api.rest.dao.impl.converter.GenericConverter;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.entity.PMSEntity;
@@ -50,9 +51,21 @@ public abstract class AbstractDaoImpl<E extends PMSEntity, RequestModel extends 
     };
 
     public List<ResponseModel> findAll() {
-
-        return null;
+        return convertList(getFacade().findAll());
     };
+
+    public List<ResponseModel> findByPage(int amountPerPage, int pageIndex) {
+        int startIndex = amountPerPage * (pageIndex - 1);
+        return convertList(getFacade().findRange(new int[]{startIndex, startIndex - 1 + amountPerPage}));
+    }
+
+    private List<ResponseModel> convertList(List<E> entityList) {
+        List<ResponseModel> responseModels = Lists.newArrayList();
+        for (E entity : entityList) {
+            responseModels.add(genericConverter.convert(entity, responseModelClass));
+        }
+        return responseModels;
+    }
 
     public ResponseModel find(Object id) {
         return genericConverter.convert(getFacade().find(id), responseModelClass);

@@ -20,6 +20,7 @@ public class NotFoundError {
         this.invalidValue = invalidValue;
     }
 
+    // Model Name + with Attribute name + inValidValue + what's up
     private NotFoundError() {
     }
 

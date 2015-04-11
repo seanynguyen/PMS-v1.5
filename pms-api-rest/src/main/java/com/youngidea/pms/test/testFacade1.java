@@ -12,6 +12,7 @@ import com.youngidea.pms.entity.item.Category;
 import com.youngidea.pms.entity.item.Item;
 import com.youngidea.pms.facade.GenericFacade;
 import com.youngidea.pms.facade.ItemFacade;
+import com.youngidea.pms.facade.ItemStatusFacade;
 import org.apache.log4j.BasicConfigurator;
 import org.quartz.SchedulerException;
 
@@ -40,6 +41,9 @@ public class testFacade1 extends HttpServlet {
     @EJB
     private ItemFacade itemFacade;
 
+    @EJB
+    private ItemStatusFacade itemStatusFacade;
+
 
 //    @EJB
 //    private ItemFacade itemFacade;
@@ -60,33 +64,34 @@ public class testFacade1 extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             BasicConfigurator.configure();
 
-            final List<String> mappingFilesNames = new ArrayList<>();
+//            final List<String> mappingFilesNames = new ArrayList<>();
+//
+//            List<Item> items = Lists.newArrayList();
+//            Item item = new Item();
+//            item.setId(Long.parseLong("3"));
+//            item.setName("Latte");
+//
+//            Item item2 = new Item();
+//            item2.setId(Long.parseLong("4"));
+//            item2.setName("Mocha");
+//
+////            Category category = new Category();
+////            category.setId(new Long("1"));
+////            category.setName("Italian Coffee");
+//
+//            Category category = genericFacade.find(Category.class, Long.parseLong("1"));
+//
+////            item.setCategory(category);
+////            item.setCategory(category);
+////            genericFacade.create(category);
+////            itemFacade.edit(item);
+////            items.add(item);
+//            items.add(item2);
+//            category.setItems(items);
+//
+//            genericFacade.edit(category);
 
-            List<Item> items = Lists.newArrayList();
-            Item item = new Item();
-            item.setId(Long.parseLong("3"));
-            item.setName("Latte");
-
-            Item item2 = new Item();
-            item2.setId(Long.parseLong("4"));
-            item2.setName("Mocha");
-
-//            Category category = new Category();
-//            category.setId(new Long("1"));
-//            category.setName("Italian Coffee");
-
-            Category category = genericFacade.find(Category.class, Long.parseLong("1"));
-
-//            item.setCategory(category);
-//            item.setCategory(category);
-//            genericFacade.create(category);
-//            itemFacade.edit(item);
-//            items.add(item);
-            items.add(item2);
-            category.setItems(items);
-
-            genericFacade.edit(category);
-
+            out.println(itemStatusFacade.findRange(new int[]{0, 18}));
 
             out.println("Holly Shit, Bitch !!!!!");
             out.println("OKKKK");
