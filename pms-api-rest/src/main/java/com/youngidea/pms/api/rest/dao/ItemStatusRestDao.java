@@ -6,6 +6,6 @@ import com.youngidea.pms.entity.item.ItemStatus;
 /**
  * Created by sean on 3/25/15.
  */
-public interface ItemStatusDao extends AbstractDao<ItemStatus, ItemStatusModel, ItemStatusModel>{
+public interface ItemStatusRestDao extends AbstractRestDao<ItemStatus, ItemStatusModel, ItemStatusModel> {
     public boolean checkNameDuplication(String name);
 }

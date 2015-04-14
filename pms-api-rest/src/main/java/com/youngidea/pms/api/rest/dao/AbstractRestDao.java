@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by sean on 3/26/15.
  */
-public interface AbstractDao<E extends PMSEntity, RequestModel extends AbstractModel, ResponseModel extends AbstractModel> {
+public interface AbstractRestDao<E extends PMSEntity, RequestModel extends AbstractModel, ResponseModel extends AbstractModel> {
 
     public ResponseModel create(RequestModel requestModel);
 

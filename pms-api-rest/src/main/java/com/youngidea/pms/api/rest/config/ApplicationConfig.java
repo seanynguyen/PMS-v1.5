@@ -19,7 +19,7 @@
 package com.youngidea.pms.api.rest.config;
 
 
-import com.youngidea.pms.api.rest.service.impl.ItemStatusServiceImpl2;
+import com.youngidea.pms.api.rest.service.impl.ItemStatusServiceImpl2Rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -43,7 +43,7 @@ public class ApplicationConfig extends Application {
      * resources.add(org.glassfish.jersey.media.multipart.MultiPartFeature.class);
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(ItemStatusServiceImpl2.class);
+        resources.add(ItemStatusServiceImpl2Rest.class);
         resources.add(ValidationExceptionMapper.class);
 
         resources.add(org.glassfish.jersey.media.multipart.MultiPartFeature.class);

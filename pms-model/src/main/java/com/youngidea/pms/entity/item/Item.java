@@ -7,7 +7,9 @@ package com.youngidea.pms.entity.item;
 
 import com.google.common.collect.Lists;
 import com.youngidea.pms.entity.PMSEntity;
+import com.youngidea.pms.facade.ItemPriceFacade;
 
+import javax.ejb.EJB;
 import javax.persistence.*;
 import java.util.List;
 
@@ -32,7 +34,7 @@ public class Item extends PMSEntity {
 
     @JoinColumn(name = "categoryID", referencedColumnName = "id")
 //    @ManyToOne(cascade = CascadeType.ALL) - Khi tao ra item -> tao ra category theo chieu tiep tuc
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Category category;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item", fetch = FetchType.EAGER)
@@ -44,7 +46,6 @@ public class Item extends PMSEntity {
 //    @ManyToMany(mappedBy = "items", cascade = CascadeType.ALL)
 //    protected List<ItemGroup> itemGroups;
 
-    
     public String getName() {
         return name;
     }
@@ -65,9 +66,6 @@ public class Item extends PMSEntity {
         return itemPrices;
     }
 
-    public void setItemPrices(List<ItemPrice> itemPrices) {
-        this.itemPrices = itemPrices;
-    }
 
 //    public List<ItemGroup> getItemGroups() {
 //        return itemGroups;
@@ -105,6 +103,21 @@ public class Item extends PMSEntity {
 
     public void removePrice(ItemPrice itemPrice) {
         itemPrices.remove(itemPrice);
+        itemPrice.setItem(null);
+    }
+
+    public void setItemPrices(List<ItemPrice> itemPrices) {
+        for (ItemPrice itemPrice : itemPrices) {
+            if (!this.itemPrices.contains(itemPrice)) {
+                itemPrice.setItem(this);
+            }
+        }
+        for (ItemPrice currentItemPrice : this.itemPrices) {
+            if (!itemPrices.contains(currentItemPrice)) {
+                currentItemPrice.setItem(null);
+            }
+        }
+        this.itemPrices = itemPrices;
     }
     
     public void clearPrices() {

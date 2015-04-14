@@ -20,7 +20,7 @@ public class GenericConverterImpl<Entity extends PMSEntity, RequestModel extends
         implements GenericConverter<Entity, RequestModel, ResponseModel> {
     private static final Logger LOGGER = LoggerFactory.getLogger(GenericConverterImpl.class);
 
-    private static final String[] DEFAULT_MAPPING_FILE_NAMES = {"dozer.xml"};
+    private static final String[] DEFAULT_MAPPING_FILE_NAMES = {"RestModelsMapping.xml"};
 
     public static final DozerBeanMapper mapper = new DozerBeanMapper();
 

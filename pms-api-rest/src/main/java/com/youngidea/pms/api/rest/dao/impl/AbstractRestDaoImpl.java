@@ -12,16 +12,20 @@ import java.util.List;
 /**
  * Created by sean on 3/25/15.
  */
-public abstract class AbstractDaoImpl<E extends PMSEntity, RequestModel extends AbstractModel, ResponseModel extends AbstractModel>  {
+public abstract class AbstractRestDaoImpl<E extends PMSEntity, RequestModel extends AbstractModel, ResponseModel extends AbstractModel>  {
 
-   @EJB
-   private GenericConverter<E, RequestModel, ResponseModel> genericConverter;
+    @EJB
+    private GenericConverter<E, RequestModel, ResponseModel> genericConverter;
 
     protected abstract <Facade extends AbstractFacade<E>> Facade getFacade();
 
+    protected <Converter extends GenericConverter<E, RequestModel, ResponseModel>> Converter getConverter() {
+        return (Converter) this.genericConverter;
+    }
+
     private Class<ResponseModel> responseModelClass;
 
-    public AbstractDaoImpl(Class<ResponseModel> responseModelClass) {
+    public AbstractRestDaoImpl(Class<ResponseModel> responseModelClass) {
         this.responseModelClass = responseModelClass;
     }
 
@@ -35,19 +39,19 @@ public abstract class AbstractDaoImpl<E extends PMSEntity, RequestModel extends 
     public ResponseModel create(RequestModel requestModel) {
         // let the child class does some shit ...
         //...
-        getFacade().create(genericConverter.convertBack(requestModel, getFacade().getEntityClass()));
-        return genericConverter.convertResToResp(requestModel);
+        getFacade().create(getConverter().convertBack(requestModel, getFacade().getEntityClass()));
+        return getConverter().convertResToResp(requestModel);
     };
 
     public ResponseModel edit(RequestModel requestModel) {
-        getFacade().edit(genericConverter.convertBack(requestModel, getFacade().getEntityClass()));
-        return genericConverter.convertResToResp(requestModel);
+        getFacade().edit(getConverter().convertBack(requestModel, getFacade().getEntityClass()));
+        return getConverter().convertResToResp(requestModel);
     };
 
     public ResponseModel remove(Object id) {
         E tobeRemoved = getFacade().find(id);
         getFacade().remove(tobeRemoved);
-        return genericConverter.convert(tobeRemoved, responseModelClass);
+        return getConverter().convert(tobeRemoved, responseModelClass);
     };
 
     public List<ResponseModel> findAll() {
@@ -62,12 +66,12 @@ public abstract class AbstractDaoImpl<E extends PMSEntity, RequestModel extends 
     private List<ResponseModel> convertList(List<E> entityList) {
         List<ResponseModel> responseModels = Lists.newArrayList();
         for (E entity : entityList) {
-            responseModels.add(genericConverter.convert(entity, responseModelClass));
+            responseModels.add(getConverter().convert(entity, responseModelClass));
         }
         return responseModels;
     }
 
     public ResponseModel find(Object id) {
-        return genericConverter.convert(getFacade().find(id), responseModelClass);
+        return getConverter().convert(getFacade().find(id), responseModelClass);
     };
 }

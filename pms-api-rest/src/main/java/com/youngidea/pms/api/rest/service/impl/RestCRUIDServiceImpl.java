@@ -1,9 +1,8 @@
 package com.youngidea.pms.api.rest.service.impl;
 
-import com.youngidea.pms.api.rest.dao.AbstractDao;
+import com.youngidea.pms.api.rest.dao.AbstractRestDao;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.api.rest.model.error.NotFoundError;
-import com.youngidea.pms.api.rest.model.validator.ValidStatus;
 import com.youngidea.pms.api.rest.service.RestCRUIDService;
 import com.youngidea.pms.api.rest.ultility.RestApiHelper;
 
@@ -16,7 +15,7 @@ import javax.ws.rs.core.Response;
 /**
  * Created by sean on 4/4/15.
  */
-public abstract class RestCRUIDServiceImpl<Dao extends AbstractDao, Model extends AbstractModel> implements RestCRUIDService<Model>{
+public abstract class RestCRUIDServiceImpl<Dao extends AbstractRestDao, Model extends AbstractModel> implements RestCRUIDService<Model>{
 
     protected abstract Dao getDao();
 

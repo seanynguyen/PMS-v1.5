@@ -7,6 +7,6 @@ import com.youngidea.pms.entity.item.Item;
 /**
  * Created by sean on 3/25/15.
  */
-public interface ItemDao extends AbstractDao<Item, ItemRequestModel, ItemResponseModel>{
+public interface ItemRestDao extends AbstractRestDao<Item, ItemRequestModel, ItemResponseModel> {
 
 }

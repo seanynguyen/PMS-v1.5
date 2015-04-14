@@ -62,43 +62,41 @@ public class testFacade1 extends HttpServlet {
             throws ServletException, IOException, SchedulerException, InterruptedException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            BasicConfigurator.configure();
 
-//            final List<String> mappingFilesNames = new ArrayList<>();
-//
-//            List<Item> items = Lists.newArrayList();
-//            Item item = new Item();
-//            item.setId(Long.parseLong("3"));
-//            item.setName("Latte");
-//
-//            Item item2 = new Item();
-//            item2.setId(Long.parseLong("4"));
-//            item2.setName("Mocha");
-//
-////            Category category = new Category();
-////            category.setId(new Long("1"));
-////            category.setName("Italian Coffee");
-//
-//            Category category = genericFacade.find(Category.class, Long.parseLong("1"));
-//
-////            item.setCategory(category);
-////            item.setCategory(category);
-////            genericFacade.create(category);
-////            itemFacade.edit(item);
-////            items.add(item);
-//            items.add(item2);
-//            category.setItems(items);
-//
-//            genericFacade.edit(category);
+// Merge entity example.
+            List<Item> items = Lists.newArrayList();
+            Item item = new Item();
+            item.setId(Long.parseLong("1"));
+            item.setName("Espresso");
 
-            out.println(itemStatusFacade.findRange(new int[]{0, 18}));
+            Item item2 = new Item();
+            item2.setId(Long.parseLong("2"));
+            item2.setName("Capuccino");
+
+            Item item3 = new Item();
+            item3.setId(Long.parseLong("3"));
+            item3.setName("Latte");
+
+            Category category = new Category();
+            category.setId(new Long("1"));
+            category.setName("Italian Coffee");
+
+            items.add(item);
+            items.add(item2);
+            items.add(item3);
+            category.setItems(items);
+
+            genericFacade.edit(category);
+//            genericFacade.edit(item);
+
+
 
             out.println("Holly Shit, Bitch !!!!!");
             out.println("OKKKK");
 
             // test dozer
 //            DozerBeanMapper mapper = new DozerBeanMapper();
-//            mappingFilesNames.add("dozer.xml");
+//            mappingFilesNames.add("RestModelsMapping.xml");
 //            mapper.setMappingFiles(mappingFilesNames);
 //
 //            dto1 newDto1 = new dto1();

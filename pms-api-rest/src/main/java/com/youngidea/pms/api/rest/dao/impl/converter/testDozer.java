@@ -3,7 +3,7 @@ package com.youngidea.pms.api.rest.dao.impl.converter;
 /**
  * Created by sean on 3/26/15.
  */
-import com.youngidea.pms.api.rest.dao.ItemStatusDao;
+import com.youngidea.pms.api.rest.dao.ItemStatusRestDao;
 import com.youngidea.pms.entity.item.ItemStatus;
 import com.youngidea.pms.facade.GenericFacade;
 import org.quartz.SchedulerException;
@@ -29,7 +29,7 @@ public class testDozer extends HttpServlet {
     private GenericFacade<ItemStatus> genericFacade;
 
     @EJB
-    private ItemStatusDao itemStatusDao;
+    private ItemStatusRestDao itemStatusDao;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

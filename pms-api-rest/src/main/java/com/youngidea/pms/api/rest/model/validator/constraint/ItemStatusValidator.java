@@ -1,11 +1,8 @@
 package com.youngidea.pms.api.rest.model.validator.constraint;
 
-import com.youngidea.pms.api.rest.dao.ItemStatusDao;
 import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.api.rest.model.validator.ValidStatus;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 

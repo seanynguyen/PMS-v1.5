@@ -1,6 +1,6 @@
 package com.youngidea.pms.api.rest.service.impl;
 
-import com.youngidea.pms.api.rest.dao.ItemStatusDao;
+import com.youngidea.pms.api.rest.dao.ItemStatusRestDao;
 import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.api.rest.model.error.ErrorModel;
 import com.youngidea.pms.api.rest.service.ItemStatusService;
@@ -19,13 +19,13 @@ import javax.ws.rs.core.Response;
 @LocalBean
 @Path("/status")
 @Stateless
-public class ItemStatusServiceImpl extends RestCRUIDServiceImpl<ItemStatusDao, ItemStatusModel> implements ItemStatusService{
+public class ItemStatusServiceImpl extends RestCRUIDServiceImpl<ItemStatusRestDao, ItemStatusModel> implements ItemStatusService{
 
     @EJB
-    private ItemStatusDao itemStatusDao;
+    private ItemStatusRestDao itemStatusDao;
 
     @Override
-    protected ItemStatusDao getDao() {
+    protected ItemStatusRestDao getDao() {
         return this.itemStatusDao;
     }
 

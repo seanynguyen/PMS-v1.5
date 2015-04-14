@@ -1,9 +1,8 @@
 package com.youngidea.pms.api.rest.service.impl;
 
-import com.youngidea.pms.api.rest.dao.ItemDao;
+import com.youngidea.pms.api.rest.dao.ItemRestDao;
 import com.youngidea.pms.api.rest.model.request.ItemRequestModel;
 import com.youngidea.pms.api.rest.service.ItemService;
-import com.youngidea.pms.facade.ItemFacade;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -16,13 +15,13 @@ import javax.ws.rs.Path;
 @LocalBean
 @Path("/item")
 @Stateless
-public class ItemServiceImpl extends RestCRUIDServiceImpl<ItemDao, ItemRequestModel> implements ItemService {
+public class ItemServiceImpl extends RestCRUIDServiceImpl<ItemRestDao, ItemRequestModel> implements ItemService {
 
     @EJB
-    private ItemDao itemDao;
+    private ItemRestDao itemDao;
 
     @Override
-    protected ItemDao getDao() {
+    protected ItemRestDao getDao() {
         return this.itemDao;
     }
 
