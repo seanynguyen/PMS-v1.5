@@ -39,6 +39,7 @@ public abstract class RestCRUIDServiceImpl<Dao extends AbstractRestDao, Model ex
 
     @DELETE
     @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response remove(@PathParam("id") Long id) {
         if (getDao().find(id) == null) {
             return RestApiHelper.buildResponse(Response.Status.NOT_FOUND,

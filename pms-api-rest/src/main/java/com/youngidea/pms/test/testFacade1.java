@@ -10,6 +10,8 @@ package com.youngidea.pms.test;
 import com.google.common.collect.Lists;
 import com.youngidea.pms.entity.item.Category;
 import com.youngidea.pms.entity.item.Item;
+import com.youngidea.pms.entity.item.ItemPrice;
+import com.youngidea.pms.entity.item.ItemStatus;
 import com.youngidea.pms.facade.GenericFacade;
 import com.youngidea.pms.facade.ItemFacade;
 import com.youngidea.pms.facade.ItemStatusFacade;
@@ -36,7 +38,7 @@ import java.util.logging.Logger;
 @WebServlet(name = "testFacade", urlPatterns = {"/testFacade"})
 public class testFacade1 extends HttpServlet {
     @EJB
-    private GenericFacade<Category> genericFacade;
+    private GenericFacade genericFacade;
 
     @EJB
     private ItemFacade itemFacade;
@@ -69,9 +71,9 @@ public class testFacade1 extends HttpServlet {
             item.setId(Long.parseLong("1"));
             item.setName("Espresso");
 
-            Item item2 = new Item();
-            item2.setId(Long.parseLong("2"));
-            item2.setName("Capuccino");
+//            Item item2 = new Item();
+//            item2.setId(Long.parseLong("2"));
+//            item2.setName("Capuccino");
 
             Item item3 = new Item();
             item3.setId(Long.parseLong("3"));
@@ -82,30 +84,35 @@ public class testFacade1 extends HttpServlet {
             category.setName("Italian Coffee");
 
             items.add(item);
-            items.add(item2);
+//            items.add(item2);
             items.add(item3);
             category.setItems(items);
 
             genericFacade.edit(category);
-//            genericFacade.edit(item);
 
+// Test Item
 
+//            Item item = new Item();
+//            item.setId(new Long("2"));
+//            item.setName("Cappuccino");
+
+//            Item item = itemFacade.find(new Long("2"));
+//
+//
+//            List<ItemPrice> itemPrices = Lists.newArrayList();
+//            ItemPrice itemPrice = new ItemPrice();
+//            itemPrice.setItemStatus((ItemStatus) genericFacade.find(ItemStatus.class, new Long("1")));
+//            itemPrice.setPrice(35000);
+//            itemPrices.add(itemPrice);
+//
+//            item.setItemPrices(itemPrices);
+//
+//
+//            itemFacade.edit(item);
 
             out.println("Holly Shit, Bitch !!!!!");
             out.println("OKKKK");
 
-            // test dozer
-//            DozerBeanMapper mapper = new DozerBeanMapper();
-//            mappingFilesNames.add("RestModelsMapping.xml");
-//            mapper.setMappingFiles(mappingFilesNames);
-//
-//            dto1 newDto1 = new dto1();
-//            newDto1.setMyName("SEAN");
-//
-//            dto2 destObject =
-//                    mapper.map(newDto1, dto2.class);
-//            out.println(destObject.getName());
-//            out.println(destObject.getCompany());
 
         }
     }

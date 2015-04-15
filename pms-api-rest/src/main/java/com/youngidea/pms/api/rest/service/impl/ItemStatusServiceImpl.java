@@ -16,9 +16,7 @@ import javax.ws.rs.core.Response;
 /**
  * Created by sean on 3/31/15.
  */
-@LocalBean
 @Path("/status")
-@Stateless
 public class ItemStatusServiceImpl extends RestCRUIDServiceImpl<ItemStatusRestDao, ItemStatusModel> implements ItemStatusService{
 
     @EJB

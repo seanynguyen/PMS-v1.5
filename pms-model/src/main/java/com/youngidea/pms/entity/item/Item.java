@@ -26,7 +26,7 @@ public class Item extends PMSEntity {
     private static final int NAME_MAX_LENGTH = 200;
     private static final int DESCRIPTION_MAX_LENGTH = 4000;
 
-    @Column(name = "name", length = NAME_MAX_LENGTH, nullable = false)
+    @Column(name = "name", length = NAME_MAX_LENGTH, nullable = false, unique = true)
     private String name;
 
     @Column(name = "description", length = DESCRIPTION_MAX_LENGTH)
@@ -37,7 +37,7 @@ public class Item extends PMSEntity {
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Category category;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item", fetch = FetchType.LAZY)
     private List<ItemPrice> itemPrices = Lists.newArrayList();
     
     @Column(name="imageURL")
@@ -114,6 +114,7 @@ public class Item extends PMSEntity {
         }
         for (ItemPrice currentItemPrice : this.itemPrices) {
             if (!itemPrices.contains(currentItemPrice)) {
+                System.out.println(currentItemPrice.getId());
                 currentItemPrice.setItem(null);
             }
         }
