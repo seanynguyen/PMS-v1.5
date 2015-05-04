@@ -18,7 +18,7 @@
  */
 package com.youngidea.pms.api.rest.service.impl;
 
-import com.youngidea.pms.api.rest.dao.impl.ItemStatusRestRestDaoImpl;
+import com.youngidea.pms.api.rest.dao.impl.ItemStatusRestDaoImpl;
 import com.youngidea.pms.api.rest.m.Person;
 import com.youngidea.pms.api.rest.m.ValidPerson;
 import com.youngidea.pms.api.rest.model.ItemStatusModel;
@@ -37,7 +37,7 @@ import java.util.concurrent.ConcurrentMap;
 
 @Path("/persons")
 @Produces(MediaType.APPLICATION_JSON)
-public class ItemStatusServiceImpl2Rest extends ItemStatusRestRestDaoImpl {
+public class ItemStatusServiceImpl2Rest extends ItemStatusRestDaoImpl {
 
     private static final ConcurrentMap<String, Person> persons = new ConcurrentHashMap<String, Person>();
 

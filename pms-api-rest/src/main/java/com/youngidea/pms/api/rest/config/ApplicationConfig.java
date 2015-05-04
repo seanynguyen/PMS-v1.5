@@ -19,13 +19,16 @@
 package com.youngidea.pms.api.rest.config;
 
 
+import com.youngidea.pms.api.rest.dao.impl.converter.ItemConverter1;
+import com.youngidea.pms.api.rest.service.impl.ItemServiceImpl;
+import com.youngidea.pms.api.rest.service.impl.ItemStatusServiceImpl;
 import com.youngidea.pms.api.rest.service.impl.ItemStatusServiceImpl2Rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.Set;
 
-@ApplicationPath("rest2")
+@ApplicationPath("rest")
 public class ApplicationConfig extends Application {
     @Override
     public Set<Class<?>> getClasses() {
@@ -43,9 +46,18 @@ public class ApplicationConfig extends Application {
      * resources.add(org.glassfish.jersey.media.multipart.MultiPartFeature.class);
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(org.glassfish.jersey.server.validation.internal.ValidationExceptionMapper.class);
+        resources.add(com.youngidea.pms.api.rest.config.ValidationExceptionMapper.class);
         resources.add(ItemStatusServiceImpl2Rest.class);
-        resources.add(ValidationExceptionMapper.class);
-
+//        resources.add(FileServiceREST.class);
+//        resources.add(OrderServiceREST.class);
+//        resources.add(RestResponseFilter.class);
+//        resources.add(CategoryServiceREST.class);
+//        resources.add(ItemGroupServiceREST.class);
+//        resources.add(ItemServiceREST.class);
+        resources.add(ItemConverter1.class);
+        resources.add(ItemStatusServiceImpl.class);
+        resources.add(ItemServiceImpl.class);
         resources.add(org.glassfish.jersey.media.multipart.MultiPartFeature.class);
     }
 }

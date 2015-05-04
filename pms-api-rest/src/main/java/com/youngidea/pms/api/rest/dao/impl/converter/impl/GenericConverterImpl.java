@@ -22,7 +22,7 @@ public class GenericConverterImpl<Entity extends PMSEntity, RequestModel extends
 
     private static final String[] DEFAULT_MAPPING_FILE_NAMES = {"RestModelsMapping.xml"};
 
-    public static final DozerBeanMapper mapper = new DozerBeanMapper();
+    protected static final DozerBeanMapper mapper = new DozerBeanMapper();
 
     @PostConstruct
     public void initializeMappingFiles() {
@@ -36,14 +36,13 @@ public class GenericConverterImpl<Entity extends PMSEntity, RequestModel extends
     }
 
     @Override
-    public ResponseModel convert(Entity input, Class<ResponseModel> responseModelClass) {
-        return input != null ? (ResponseModel) mapper.map(input, responseModelClass) : null;
+    public ResponseModel convert(Entity input, Class<ResponseModel> outputClass) {
+        return input != null ? (ResponseModel) mapper.map(input, outputClass) : null;
     }
 
     @Override
-    public Entity convertBack(RequestModel input, Class<Entity> entityClass) {
-        Entity entity = (Entity) mapper.map(input, entityClass);
-        return entity;
+    public Entity convertBack(RequestModel input, Class<Entity> outputClass) {
+        return input != null ? (Entity) mapper.map(input, outputClass) : null;
     }
 
     @Override

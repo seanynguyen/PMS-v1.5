@@ -28,7 +28,7 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.Set;
 
-@ApplicationPath("rest")
+@ApplicationPath("rest2")
 public class ApplicationConfig extends Application {
     @Override
     public Set<Class<?>> getClasses() {

@@ -13,15 +13,15 @@ import javax.ejb.Stateless;
  * Created by sean on 3/25/15.
  */
 @Stateless
-public class ItemStatusRestRestDaoImpl extends AbstractRestDaoImpl<ItemStatus, ItemStatusModel, ItemStatusModel> implements ItemStatusRestDao {
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ItemStatusRestRestDaoImpl.class);
+public class ItemStatusRestDaoImpl extends AbstractRestDaoImpl<ItemStatus, ItemStatusModel, ItemStatusModel> implements ItemStatusRestDao {
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ItemStatusRestDaoImpl.class);
 
 //    private AbstractConverter<ItemStatus, ItemStatusModel, ItemStatusModel> CONVERTER;
 
     @EJB
     private ItemStatusFacade itemStatusFacade;
 
-    public ItemStatusRestRestDaoImpl() {
+    public ItemStatusRestDaoImpl() {
         super(ItemStatusModel.class);
     }
 

@@ -17,8 +17,7 @@ import java.util.List;
  */
 public class ItemRequestModel extends AbstractModel {
     private static final String DEFAULT_IMAGE_URL= "/home/sean/Pictures/15395506730_5b94003d67_m.jpg";
-    
-    
+
     @NotNull(message="{entity.item.name.notnull}")
     private String name;
     private String description;

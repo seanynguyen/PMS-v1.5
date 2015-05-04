@@ -30,7 +30,7 @@ public class ItemStatus extends PMSEntity {
     @Column(name="imageURL")
     private String imageURL;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "itemStatus", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "itemStatus", fetch = FetchType.LAZY)
     private List<ItemPrice> itemPrices;
     
     

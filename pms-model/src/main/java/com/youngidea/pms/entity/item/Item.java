@@ -26,6 +26,8 @@ public class Item extends PMSEntity {
     private static final int NAME_MAX_LENGTH = 200;
     private static final int DESCRIPTION_MAX_LENGTH = 4000;
 
+    private static final List<ItemPrice> nonUsedPrices = Lists.newArrayList();
+
     @Column(name = "name", length = NAME_MAX_LENGTH, nullable = false, unique = true)
     private String name;
 
@@ -108,17 +110,20 @@ public class Item extends PMSEntity {
 
     public void setItemPrices(List<ItemPrice> itemPrices) {
         for (ItemPrice itemPrice : itemPrices) {
-            if (!this.itemPrices.contains(itemPrice)) {
+            if (!this.itemPrices.contains(itemPrice) || itemPrice.getId() == null) { // can not compare null id, that's why we need to add itemPrice.getId() == null case.
                 itemPrice.setItem(this);
             }
         }
         for (ItemPrice currentItemPrice : this.itemPrices) {
             if (!itemPrices.contains(currentItemPrice)) {
-                System.out.println(currentItemPrice.getId());
-                currentItemPrice.setItem(null);
+                nonUsedPrices.add(currentItemPrice);
             }
         }
         this.itemPrices = itemPrices;
+    }
+
+    public List<ItemPrice> getNonUsedPrices() {
+        return this.nonUsedPrices;
     }
     
     public void clearPrices() {

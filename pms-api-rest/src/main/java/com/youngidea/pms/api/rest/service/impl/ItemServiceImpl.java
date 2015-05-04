@@ -12,9 +12,7 @@ import javax.ws.rs.Path;
 /**
  * Created by sean on 4/11/15.
  */
-@LocalBean
 @Path("/item")
-@Stateless
 public class ItemServiceImpl extends RestCRUIDServiceImpl<ItemRestDao, ItemRequestModel> implements ItemService {
 
     @EJB

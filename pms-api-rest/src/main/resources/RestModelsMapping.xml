@@ -10,33 +10,88 @@
         <wildcard>true</wildcard>
     </configuration>
 
+    <!--REMEMBER, IF A MAPPING INCLUDING ID PART, ITS ID MUST BE ADDED TO THE JAVA CONVERTER AS WELL-->
+
     <!-- Item Status mapping -->
-    <mapping>
+    <mapping map-id="statusMapping">
         <class-a>com.youngidea.pms.entity.item.ItemStatus</class-a>
         <class-b>com.youngidea.pms.api.rest.model.ItemStatusModel</class-b>
+        <!--<field>-->
+            <!--<a>id</a>-->
+            <!--<b>id</b>-->
+        <!--</field>-->
+        <field>
+            <a>name</a>
+            <b>statusName</b>
+        </field>
+        <!--<field>-->
+            <!--<a>description</a>-->
+            <!--<b>description</b>-->
+        <!--</field>-->
+        <!--<field>-->
+            <!--<a>description</a>-->
+            <!--<b>description</b>-->
+        <!--</field>-->
+        <!--<field>-->
+            <!--<a>imageURL</a>-->
+            <!--<b>imageURL</b>-->
+        <!--</field>-->
+    </mapping>
+
+    <mapping>
+        <class-a>com.youngidea.pms.api.rest.model.ItemStatusModel</class-a>
+        <class-b>com.youngidea.pms.entity.item.ItemStatus</class-b>
+        <!--<field>-->
+            <!--<a>id</a>-->
+            <!--<b>id</b>-->
+        <!--</field>-->
+        <field>
+            <a>statusName</a>
+            <b>name</b>
+        </field>
+        <!--<field>-->
+        <!--<a>description</a>-->
+        <!--<b>description</b>-->
+        <!--</field>-->
+        <!--<field>-->
+        <!--<a>description</a>-->
+        <!--<b>description</b>-->
+        <!--</field>-->
+        <!--<field>-->
+        <!--<a>imageURL</a>-->
+        <!--<b>imageURL</b>-->
+        <!--</field>-->
+    </mapping>
+
+    <!-- Item price -->
+    <mapping>
+        <!-- Test -->
+        <!--<class-a>com.youngidea.pms.api.rest.dao.impl.converter.impl.dozer.ItemPriceSrcDozerTest</class-a>-->
+        <!--<class-b>com.youngidea.pms.api.rest.dao.impl.converter.impl.dozer.ItemPriceDestDozerTest</class-b>-->
+        <class-a>com.youngidea.pms.api.rest.model.request.ItemPriceRequestModel</class-a>
+        <class-b>com.youngidea.pms.entity.item.ItemPrice</class-b>
         <field>
             <a>id</a>
             <b>id</b>
         </field>
         <field>
-            <a>name</a>
-            <b>statusName</b>
+            <a>statusId</a>
+            <b>itemStatus.id</b>
         </field>
         <field>
-            <a>description</a>
-            <b>description</b>
-        </field>
-        <field>
-            <a>description</a>
-            <b>description</b>
-        </field>
-        <field>
-            <a>imageURL</a>
-            <b>imageURL</b>
+            <a>price</a>
+            <b>price</b>
         </field>
     </mapping>
 
-    <!-- Item mapping -->
 
+    <mapping>
+        <class-a>com.youngidea.pms.api.rest.model.request.ItemRequestModel</class-a>
+        <class-b>com.youngidea.pms.entity.item.Item</class-b>
+        <field>
+            <a>categoryId</a>
+            <b>category.id</b>
+        </field>
+    </mapping>
 
 </mappings>

@@ -27,10 +27,23 @@ public class ItemFacadeImpl extends GenericFacadeImpl<Item> implements ItemFacad
     @Override
     public void edit(Item item) {
         super.edit(item);
-        Query querry = em.createQuery("SELECT p FROM " + ItemPrice.class.getSimpleName() + " p WHERE p.item= :null").setParameter("null", null);
-        for (Object itemPrice : querry.getResultList()) {
-            itemPriceFacade.remove((ItemPrice) itemPrice);
+        List<ItemPrice> nonUsedPrices = item.getNonUsedPrices();
+        for (ItemPrice nonUsedPrice : nonUsedPrices) {
+            itemPriceFacade.remove(nonUsedPrice);
         }
+        nonUsedPrices.clear();
     }
+
+//    for (ItemPrice itemPrice : itemPrices) {
+//        if (!this.itemPrices.contains(itemPrice)) {
+//            itemPrice.setItem(this);
+//        }
+//    }
+//    for (ItemPrice currentItemPrice : this.itemPrices) {
+//        if (!itemPrices.contains(currentItemPrice)) {
+//            System.out.println(currentItemPrice.getId());
+//            currentItemPrice.setItem(null);
+//        }
+//    }
 
 }
