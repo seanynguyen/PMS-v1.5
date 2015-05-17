@@ -30,6 +30,7 @@ public class ItemStatusRestDaoImpl extends AbstractRestDaoImpl<ItemStatus, ItemS
         return itemStatusFacade;
     }
 
+
     public boolean checkNameDuplication(String name) {
         return itemStatusFacade.checkNameDuplication(name);
     }

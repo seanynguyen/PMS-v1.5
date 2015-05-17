@@ -15,6 +15,7 @@ import com.youngidea.pms.entity.item.Category;
 import com.youngidea.pms.entity.item.Item;
 import com.youngidea.pms.entity.item.ItemPrice;
 import com.youngidea.pms.entity.item.ItemStatus;
+import com.youngidea.pms.facade.CategoryFacade;
 import com.youngidea.pms.facade.GenericFacade;
 import com.youngidea.pms.facade.ItemFacade;
 import com.youngidea.pms.facade.ItemStatusFacade;
@@ -52,6 +53,9 @@ public class testFacade1 extends HttpServlet {
     @EJB
     private GenericConverter<ItemPrice, ItemPriceRequestModel, ItemPriceResponseModel> genericConverter;
 
+    @EJB
+    private CategoryFacade categoryFacade;
+
 //    @EJB
 //    private ItemFacade itemFacade;
 
@@ -69,80 +73,80 @@ public class testFacade1 extends HttpServlet {
             throws ServletException, IOException, SchedulerException, InterruptedException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-//// Merge entity example.
-//            List<Item> items = Lists.newArrayList();
-//            Item item = new Item();
-//            item.setId(Long.parseLong("1"));
-//            item.setName("Espresso");
 //
-////            Item item2 = new Item();
-////            item2.setId(Long.parseLong("2"));
-////            item2.setName("Capuccino");
+////// Merge entity example.
+////            List<Item> items = Lists.newArrayList();
+////            Item item = new Item();
+////            item.setId(Long.parseLong("1"));
+////            item.setName("Espresso");
+////
+//////            Item item2 = new Item();
+//////            item2.setId(Long.parseLong("2"));
+//////            item2.setName("Capuccino");
+////
+////            Item item3 = new Item();
+////            item3.setId(Long.parseLong("3"));
+////            item3.setName("Latte");
+////
+////            Category category = new Category();
+////            category.setId(new Long("1"));
+////            category.setName("Italian Coffee");
+////
+////            items.add(item);
+//////            items.add(item2);
+////            items.add(item3);
+////            category.setItems(items);
+////
+////            genericFacade.edit(category);
 //
-//            Item item3 = new Item();
-//            item3.setId(Long.parseLong("3"));
-//            item3.setName("Latte");
+//// Test Item
 //
-//            Category category = new Category();
-//            category.setId(new Long("1"));
-//            category.setName("Italian Coffee");
+////            Item item = new Item();
+////            item.setId(new Long("2"));
+////            item.setName("Cappuccino");
 //
-//            items.add(item);
-////            items.add(item2);
-//            items.add(item3);
-//            category.setItems(items);
 //
-//            genericFacade.edit(category);
-
-// Test Item
-
-//            Item item = new Item();
-//            item.setId(new Long("2"));
-//            item.setName("Cappuccino");
-
-
-            // Item nguyen goc duoc lay len tu database
-            Item item = itemFacade.find(new Long("11"));
-
-            List<ItemPrice> itemPrices = Lists.newArrayList();
-            ItemPrice itemPrice = new ItemPrice();
-            itemPrice.setItemStatus((ItemStatus) genericFacade.find(ItemStatus.class, new Long("1")));
-            itemPrice.setPrice(35000);
-            itemPrices.add(itemPrice);
-            item.setItemPrices(itemPrices);
-            itemFacade.edit(item);
-
-
-            // Item gia lap lai item tu database, ko co du lieu cu nen ko xoa cac price cu
-//            Item item = new Item();
-//            item.setId(new Long("11"));
-//            item.setDescription("FUCK THAT SHIT");
-//            item.setName("SHIT");
+//            // Item nguyen goc duoc lay len tu database
+//            Item item = itemFacade.find(new Long("11"));
+//
 //            List<ItemPrice> itemPrices = Lists.newArrayList();
 //            ItemPrice itemPrice = new ItemPrice();
-//            ItemStatus itemStatus = new ItemStatus();
-//            itemStatus.setId(new Long("2"));
-//            itemPrice.setItemStatus(itemStatus);
+//            itemPrice.setItemStatus((ItemStatus) genericFacade.find(ItemStatus.class, new Long("1")));
 //            itemPrice.setPrice(35000);
 //            itemPrices.add(itemPrice);
 //            item.setItemPrices(itemPrices);
 //            itemFacade.edit(item);
+//
+//
+//            // Item gia lap lai item tu database, ko co du lieu cu nen ko xoa cac price cu
+////            Item item = new Item();
+////            item.setId(new Long("11"));
+////            item.setDescription("FUCK THAT SHIT");
+////            item.setName("SHIT");
+////            List<ItemPrice> itemPrices = Lists.newArrayList();
+////            ItemPrice itemPrice = new ItemPrice();
+////            ItemStatus itemStatus = new ItemStatus();
+////            itemStatus.setId(new Long("2"));
+////            itemPrice.setItemStatus(itemStatus);
+////            itemPrice.setPrice(35000);
+////            itemPrices.add(itemPrice);
+////            item.setItemPrices(itemPrices);
+////            itemFacade.edit(item);
+//
+//            ItemPriceRequestModel itemPriceModel = new ItemPriceRequestModel();
+//            itemPriceModel.setId(new Long("1"));
+//            itemPriceModel.setStatusId(new Long("1"));
+//            itemPriceModel.setPrice(56);
+//            ItemPrice output = genericConverter.convertBack(itemPriceModel, ItemPrice.class);
+//
+//            out.println(output.getId());
+//            out.println(output.getItemStatus().getId());
+//            out.println(output.getPrice());
+//
+//            out.println("Holly Shit, Bitch !!!!!");
+//            out.println("OKKKK");
 
-            ItemPriceRequestModel itemPriceModel = new ItemPriceRequestModel();
-            itemPriceModel.setId(new Long("1"));
-            itemPriceModel.setStatusId(new Long("1"));
-            itemPriceModel.setPrice(56);
-            ItemPrice output = genericConverter.convertBack(itemPriceModel, ItemPrice.class);
-
-            out.println(output.getId());
-            out.println(output.getItemStatus().getId());
-            out.println(output.getPrice());
-
-            out.println("Holly Shit, Bitch !!!!!");
-            out.println("OKKKK");
-
-
+            out.println(categoryFacade.find(Long.parseLong("1")));
         }
     }
 

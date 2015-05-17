@@ -30,8 +30,7 @@ public class ItemRequestModel extends AbstractModel {
     public ItemRequestModel() {
         
     }
-    
-    
+
     public String getName() {
         return name;
     }

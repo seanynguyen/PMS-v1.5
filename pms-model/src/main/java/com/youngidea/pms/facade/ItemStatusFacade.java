@@ -10,6 +10,5 @@ import java.util.List;
  */
 @Local
 public interface ItemStatusFacade extends AbstractFacade<ItemStatus>{
-
     public boolean checkNameDuplication(String name);
 }

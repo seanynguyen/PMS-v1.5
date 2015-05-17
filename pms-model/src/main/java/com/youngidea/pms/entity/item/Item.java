@@ -36,7 +36,7 @@ public class Item extends PMSEntity {
 
     @JoinColumn(name = "categoryID", referencedColumnName = "id")
 //    @ManyToOne(cascade = CascadeType.ALL) - Khi tao ra item -> tao ra category theo chieu tiep tuc
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Category category;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item", fetch = FetchType.LAZY)
@@ -110,16 +110,12 @@ public class Item extends PMSEntity {
 
     public void setItemPrices(List<ItemPrice> itemPrices) {
         for (ItemPrice itemPrice : itemPrices) {
-            if (!this.itemPrices.contains(itemPrice) || itemPrice.getId() == null) { // can not compare null id, that's why we need to add itemPrice.getId() == null case.
-                itemPrice.setItem(this);
-            }
+//            if (!this.itemPrices.contains(itemPrice) || itemPrice.getId() == null) { // can not compare null id, that's why we need to add itemPrice.getId() == null case.
+//                itemPrice.setItem(this);
+//            }
+            itemPrice.setItem(this);
         }
-        for (ItemPrice currentItemPrice : this.itemPrices) {
-            if (!itemPrices.contains(currentItemPrice)) {
-                nonUsedPrices.add(currentItemPrice);
-            }
-        }
-        this.itemPrices = itemPrices;
+        this.itemPrices = itemPrices; // this line overrided the current prices.
     }
 
     public List<ItemPrice> getNonUsedPrices() {

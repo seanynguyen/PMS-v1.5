@@ -3,35 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.youngidea.pms.api.rest.model.response;
+package com.youngidea.pms.api.rest.model;
 
 import com.youngidea.pms.api.rest.model.AbstractModel;
+
+import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author sean
  */
 public class CategoryModel extends AbstractModel {
-//    private static final Long ROOT_CATEGORY_ID = Long.parseLong("100");
     
+    @NotNull(message="{entity.category.name.notnull}")
     private String name;
     private String description;
     private Long parentId;
-            
+
+    public CategoryModel() {}
     
     public CategoryModel(String name, String description) {
         this.name = name;
         this.description = description;
     }
-
-    public CategoryModel() {}
-        
+    
     public CategoryModel(String name, String description, Long parentId) {
         this.name = name;
         this.description = description;
         this.parentId = parentId;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -55,5 +56,5 @@ public class CategoryModel extends AbstractModel {
     public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
-
+    
 }

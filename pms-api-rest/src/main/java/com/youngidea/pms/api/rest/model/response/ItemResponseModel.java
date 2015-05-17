@@ -6,6 +6,7 @@
 package com.youngidea.pms.api.rest.model.response;
 
 import com.youngidea.pms.api.rest.model.AbstractModel;
+import com.youngidea.pms.api.rest.model.CategoryModel;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class ItemResponseModel extends AbstractModel {
     private List<ItemPriceResponseModel> itemPriceResponseModels;
 //    private CategoryModel categoryModel = new CategoryModel();
     private String imageURL;
-    private CategoryModel1 categoryModel1;
+    private CategoryModel categoryModel;
     
     // Use when errors come
     public ItemResponseModel() {
@@ -69,12 +70,12 @@ public class ItemResponseModel extends AbstractModel {
 //        this.categoryModel = categoryModel;
 //    }
 
-    public CategoryModel1 getCategoryModel1() {
-        return categoryModel1;
+    public CategoryModel getCategoryModel() {
+        return categoryModel;
     }
 
-    public void setCategoryModel1(CategoryModel1 testModel4) {
-        this.categoryModel1 = testModel4;
+    public void setCategoryModel(CategoryModel testModel4) {
+        this.categoryModel = testModel4;
     }
 
 }

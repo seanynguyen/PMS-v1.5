@@ -37,7 +37,7 @@ public class TestDozerBean {
 //        System.out.println(p1.getAdrs1().getDoorNo1());
         mapper.map(pSrc, pDest);
         System.out.println(pDest.getId());
-        System.out.println(pDest.getItemStatus().getId());
+//        System.out.println(pDest.getItemStatus().getId());
         System.out.println(pDest.getPrice());
     }
 }

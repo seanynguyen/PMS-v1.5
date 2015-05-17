@@ -1,6 +1,7 @@
 package com.youngidea.pms.facade.impl;
 
 import com.youngidea.pms.entity.item.ItemStatus;
+import com.youngidea.pms.exception.EntityNameDuplicationException;
 import com.youngidea.pms.facade.ItemStatusFacade;
 
 import javax.ejb.Stateless;
@@ -18,8 +19,20 @@ public class ItemStatusFacadeImpl extends GenericFacadeImpl<ItemStatus> implemen
         super(ItemStatus.class);
     }
 
-    public boolean checkNameDuplication(String name) {
-        return super.findByName(name).isEmpty() ? false : true;
+    @Override
+    public void create(ItemStatus itemStatus) {
+        if (super.checkNameDuplication(itemStatus.getName())) {
+            return;
+        }
+        super.create(itemStatus);
+    }
+
+    @Override
+    public void edit(ItemStatus itemStatus) {
+        if (super.checkNameDuplication(itemStatus.getName())) {
+            return;
+        }
+        super.edit(itemStatus);
     }
 
 }

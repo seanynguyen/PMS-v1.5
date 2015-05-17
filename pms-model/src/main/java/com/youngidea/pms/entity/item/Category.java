@@ -18,13 +18,18 @@ import java.util.List;
  */
 @Entity
 @Table(name="Category")
+@AttributeOverride(name = "id", column = @Column(name = "ID"))
 public class Category extends PMSEntity {
+    public static final Long ROOT_CATEGORY_ID = 1L;
     private static final long serialVersionUID = 1L;
     private static final int NAME_MAX_LENGTH = 200;
     private static final int DESCRIPTON_MAX_LENGTH = 4000;
+    // Override this id to make sure that the super generator does not affect
+    // the id of root category when it's created in the initiation stage
+    @Id
+    private Long id;
 
-    
-    @Column(name="name", length = NAME_MAX_LENGTH, nullable = false)
+    @Column(name="name", length = NAME_MAX_LENGTH, nullable = false, unique = true)
     private String name;
     
     @Column(name="description", length = DESCRIPTON_MAX_LENGTH)
@@ -39,7 +44,17 @@ public class Category extends PMSEntity {
 
     @OneToMany(cascade = CascadeType.MERGE, mappedBy = "category", fetch = FetchType.LAZY)
     private List<Item> items = Lists.newArrayList();
-    
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

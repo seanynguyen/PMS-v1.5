@@ -16,54 +16,13 @@
     <mapping map-id="statusMapping">
         <class-a>com.youngidea.pms.entity.item.ItemStatus</class-a>
         <class-b>com.youngidea.pms.api.rest.model.ItemStatusModel</class-b>
-        <!--<field>-->
-            <!--<a>id</a>-->
-            <!--<b>id</b>-->
-        <!--</field>-->
         <field>
             <a>name</a>
             <b>statusName</b>
         </field>
-        <!--<field>-->
-            <!--<a>description</a>-->
-            <!--<b>description</b>-->
-        <!--</field>-->
-        <!--<field>-->
-            <!--<a>description</a>-->
-            <!--<b>description</b>-->
-        <!--</field>-->
-        <!--<field>-->
-            <!--<a>imageURL</a>-->
-            <!--<b>imageURL</b>-->
-        <!--</field>-->
     </mapping>
 
-    <mapping>
-        <class-a>com.youngidea.pms.api.rest.model.ItemStatusModel</class-a>
-        <class-b>com.youngidea.pms.entity.item.ItemStatus</class-b>
-        <!--<field>-->
-            <!--<a>id</a>-->
-            <!--<b>id</b>-->
-        <!--</field>-->
-        <field>
-            <a>statusName</a>
-            <b>name</b>
-        </field>
-        <!--<field>-->
-        <!--<a>description</a>-->
-        <!--<b>description</b>-->
-        <!--</field>-->
-        <!--<field>-->
-        <!--<a>description</a>-->
-        <!--<b>description</b>-->
-        <!--</field>-->
-        <!--<field>-->
-        <!--<a>imageURL</a>-->
-        <!--<b>imageURL</b>-->
-        <!--</field>-->
-    </mapping>
-
-    <!-- Item price -->
+    <!-- Item price mapping -->
     <mapping>
         <!-- Test -->
         <!--<class-a>com.youngidea.pms.api.rest.dao.impl.converter.impl.dozer.ItemPriceSrcDozerTest</class-a>-->
@@ -84,7 +43,8 @@
         </field>
     </mapping>
 
-
+    <!-- Item mapping -->
+    <!-- Request -> Entity -->
     <mapping>
         <class-a>com.youngidea.pms.api.rest.model.request.ItemRequestModel</class-a>
         <class-b>com.youngidea.pms.entity.item.Item</class-b>
@@ -93,5 +53,30 @@
             <b>category.id</b>
         </field>
     </mapping>
-
+    <!-- Entity -> Response -->
+    <mapping>
+        <class-a>com.youngidea.pms.entity.item.Item</class-a>
+        <class-b>com.youngidea.pms.api.rest.model.response.ItemResponseModel</class-b>
+        <field>
+            <a>category.id</a>
+            <b>categoryModel.id</b>
+        </field>
+        <field>
+            <a>category.name</a>
+            <b>categoryModel.name</b>
+        </field>
+        <field>
+            <a>category.description</a>
+            <b>categoryModel.description</b>
+        </field>
+        <field>
+            <a>category.parentCategory.id</a>
+            <b>categoryModel.parentId</b>
+        </field>
+    </mapping>
+    <!-- Category mapping -->
+    <mapping>
+        <class-a>com.youngidea.pms.api.rest.model.CategoryModel</class-a>
+        <class-b>com.youngidea.pms.entity.item.Category</class-b>
+    </mapping>
 </mappings>
