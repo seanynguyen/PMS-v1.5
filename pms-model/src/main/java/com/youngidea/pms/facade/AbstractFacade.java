@@ -1,7 +1,5 @@
 package com.youngidea.pms.facade;
 
-import com.youngidea.pms.exception.EntityNameDuplicationException;
-
 import javax.ejb.Local;
 import java.util.List;
 
@@ -26,4 +24,6 @@ public interface AbstractFacade<E> {
     public List<E> findByName(String name);
 
     public List<E> findRange(int[] range);
+
+    boolean checkNameDuplication(String name);
 }

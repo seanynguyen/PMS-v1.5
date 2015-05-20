@@ -1,7 +1,7 @@
-package com.youngidea.pms.api.rest.dao.impl.converter.impl.dozer.test;
+package com.youngidea.pms.api.rest.dao.converter.impl.dozer.test;
 
-import com.youngidea.pms.api.rest.dao.impl.converter.impl.dozer.ItemPriceDestDozerTest;
-import com.youngidea.pms.api.rest.dao.impl.converter.impl.dozer.ItemPriceSrcDozerTest;
+import com.youngidea.pms.api.rest.dao.converter.impl.dozer.ItemPriceDestDozerTest;
+import com.youngidea.pms.api.rest.dao.converter.impl.dozer.ItemPriceSrcDozerTest;
 import org.dozer.DozerBeanMapper;
 
 import java.util.ArrayList;

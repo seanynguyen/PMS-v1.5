@@ -1,4 +1,4 @@
-package com.youngidea.pms.api.rest.dao.impl.converter;
+package com.youngidea.pms.api.rest.dao.converter;
 
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.entity.PMSEntity;
@@ -7,7 +7,6 @@ import org.dozer.DozerBeanMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

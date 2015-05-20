@@ -50,10 +50,10 @@ public class CategoryFacadeImpl extends GenericFacadeImpl<Category> implements C
         }
     }
 
-    private void createRootCategory() { // should be created in some where else
+    public void createRootCategory() {
         if (findRootCategory() == null) {
             Category category = new Category();
-            category.setId(CategoryFacadeImpl.ROOT_CATEGORY_ID);
+            category.setId(Category.ROOT_CATEGORY_ID);
             category.setName("Uncategoried");
             category.setDescription("Uncategoried is the root category");
             category.setParentCategory(null);

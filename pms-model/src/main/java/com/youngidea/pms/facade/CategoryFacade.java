@@ -9,5 +9,9 @@ import javax.ejb.Local;
  */
 @Local
 public interface CategoryFacade extends AbstractFacade<Category> {
+
     Category findRootCategory();
+
+    void createRootCategory();
+
 }

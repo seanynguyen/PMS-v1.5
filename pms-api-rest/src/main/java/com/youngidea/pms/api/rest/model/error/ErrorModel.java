@@ -11,6 +11,9 @@ public class ErrorModel {
     private Object model;
     private Object invalidValue;
 
+    public ErrorModel() {
+    }
+
     public ErrorModel(String message, Object invalidValue, Object model) {
         this.message = message;
         this.invalidValue = invalidValue;

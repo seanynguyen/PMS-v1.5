@@ -1,6 +1,7 @@
 package com.youngidea.pms.api.rest.service.impl;
 
 import com.youngidea.pms.api.rest.dao.ItemStatusRestDao;
+import com.youngidea.pms.api.rest.exception.ModelNameDuplicationException;
 import com.youngidea.pms.api.rest.model.ItemStatusModel;
 import com.youngidea.pms.api.rest.model.error.ErrorModel;
 import com.youngidea.pms.api.rest.service.ItemStatusService;
@@ -30,7 +31,7 @@ public class ItemStatusServiceImpl extends RestCRUIDServiceImpl<ItemStatusRestDa
     @Override
     @POST
     @Consumes({"application/xml", "application/json"})
-    public Response create(@Valid ItemStatusModel itemStatusModel) {
+    public Response create(@Valid ItemStatusModel itemStatusModel) throws ModelNameDuplicationException {
         if (itemStatusDao.checkNameDuplication(itemStatusModel.getStatusName())) {
             return RestApiHelper.buildResponse(Response.Status.BAD_REQUEST, new ErrorModel(itemStatusModel, "statusName",
                     itemStatusModel.getStatusName(), " is duplicated"));

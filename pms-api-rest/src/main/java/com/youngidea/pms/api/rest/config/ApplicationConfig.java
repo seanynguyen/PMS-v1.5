@@ -19,7 +19,9 @@
 package com.youngidea.pms.api.rest.config;
 
 
-import com.youngidea.pms.api.rest.dao.impl.converter.ItemConverter1;
+import com.youngidea.pms.api.rest.dao.converter.ItemConverter;
+import com.youngidea.pms.api.rest.exception.ModelNameDuplicationException;
+import com.youngidea.pms.api.rest.exception.mapper.ModelNameDuplicationExceptionMapper;
 import com.youngidea.pms.api.rest.service.impl.CategoryServiceImpl;
 import com.youngidea.pms.api.rest.service.impl.ItemServiceImpl;
 import com.youngidea.pms.api.rest.service.impl.ItemStatusServiceImpl;
@@ -56,10 +58,12 @@ public class ApplicationConfig extends Application {
 //        resources.add(CategoryServiceREST.class);
 //        resources.add(ItemGroupServiceREST.class);
 //        resources.add(ItemServiceREST.class);
-        resources.add(ItemConverter1.class);
+        resources.add(ItemConverter.class);
         resources.add(ItemStatusServiceImpl.class);
         resources.add(ItemServiceImpl.class);
         resources.add(CategoryServiceImpl.class);
+        resources.add(ModelNameDuplicationException.class);
+        resources.add(ModelNameDuplicationExceptionMapper.class);
         resources.add(org.glassfish.jersey.media.multipart.MultiPartFeature.class);
     }
 }

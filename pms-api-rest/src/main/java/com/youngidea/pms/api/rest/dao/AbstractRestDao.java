@@ -1,5 +1,6 @@
 package com.youngidea.pms.api.rest.dao;
 
+import com.youngidea.pms.api.rest.exception.ModelNameDuplicationException;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.entity.PMSEntity;
 
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public interface AbstractRestDao<E extends PMSEntity, RequestModel extends AbstractModel, ResponseModel extends AbstractModel> {
 
-    public ResponseModel create(RequestModel requestModel);
+    public ResponseModel create(RequestModel requestModel) throws ModelNameDuplicationException;
 
     public ResponseModel edit(RequestModel requestModel);
 

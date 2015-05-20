@@ -1,5 +1,6 @@
 package com.youngidea.pms.api.rest.service;
 
+import com.youngidea.pms.api.rest.exception.ModelNameDuplicationException;
 import com.youngidea.pms.api.rest.model.request.ItemRequestModel;
 
 import javax.ejb.Local;
@@ -12,6 +13,6 @@ import javax.ws.rs.core.Response;
 @Local
 public interface ItemService extends RestCRUIDService<ItemRequestModel>{
 
-    public Response create(@Valid ItemRequestModel model);
+    public Response create(@Valid ItemRequestModel model) throws ModelNameDuplicationException;
 
 }

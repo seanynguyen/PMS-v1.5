@@ -1,7 +1,8 @@
 package com.youngidea.pms.api.rest.dao.impl;
 
 import com.youngidea.pms.api.rest.dao.ItemRestDao;
-import com.youngidea.pms.api.rest.dao.impl.converter.ItemConverter1;
+import com.youngidea.pms.api.rest.dao.converter.ItemConverter;
+import com.youngidea.pms.api.rest.exception.ModelNameDuplicationException;
 import com.youngidea.pms.api.rest.model.request.ItemRequestModel;
 import com.youngidea.pms.api.rest.model.response.ItemResponseModel;
 import com.youngidea.pms.entity.item.Item;
@@ -20,18 +21,30 @@ public class ItemRestDaoImpl extends AbstractRestDaoImpl<Item, ItemRequestModel,
     private ItemFacade itemFacade;
 
     @EJB
-    private ItemConverter1 itemConverter1;
+    private ItemConverter itemConverter;
 
     public ItemRestDaoImpl() {
         super(ItemResponseModel.class);
     }
 
+    // Common CRUID method:
+    @Override
+    public ItemResponseModel create(ItemRequestModel itemRequestModel) throws ModelNameDuplicationException {
+        if (!itemFacade.checkNameDuplication(itemRequestModel.getName())) {
+            return super.create(itemRequestModel);
+        } else {
+            throw new ModelNameDuplicationException(itemRequestModel, itemRequestModel.getName());
+        }
+    }
+
+    // Override procedure
     @Override
     protected ItemFacade getFacade() {
         return this.itemFacade;
     }
 
-    protected ItemConverter1 getConverter() {
-        return itemConverter1;
+    @Override
+    protected ItemConverter getConverter() {
+        return itemConverter;
     }
 }

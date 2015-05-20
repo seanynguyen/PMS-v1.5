@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.youngidea.pms.api.rest;
+package com.youngidea.pms.api.rest.service.impl;
 
-import com.youngidea.pms.ultilities.OrdersList;
-import com.youngidea.pms.ultilities.PropertiesRetriever;
-import com.youngidea.pms.ultilities.UploadHelper;
+import com.youngidea.pms.api.rest.service.FileManagementService;
 
-import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -17,43 +9,16 @@ import javax.ws.rs.core.StreamingOutput;
 import java.io.*;
 
 /**
- *
- * @author sean
+ * Created by sean on 5/20/15.
  */
-@Path("/file")
-public class FileServiceREST {
+public class FileManagementServiceImpl implements FileManagementService {
 
-    private static final String UPLOAD_SUCCESSFUL_MESSAGE = "File Successfully uploaded";
-//    private static final Properties props = new Properties();
-    
-    @EJB
-    private PropertiesRetriever propertiesRetriever;
-
-//InputStream inputStream  = MyProperties.class.getClassLoader().getResourceAsStream("file.properties");
-//this.properties = new Properties();
-//this.properties.load(inputStream);            
-            
-    @GET
-    @Path("/testProps")
-    public String testProps() throws IOException {
-//        InputStream inputStream = MyProperties.class.getClassLoader().getResourceAsStream("test.properties");
-//        this.props.load(inputStream);
-//        return props.getProperty("test");
-        return propertiesRetriever.getProp("test");
-    }
-    
-    @GET
-    @Path("/testOrdersList")
-    public OrdersList testOrdersList() {
-        return new OrdersList();
-    }
-    
     @POST
     @Path("/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
 //    @Produces("image/jpg")
     public Response uploadImage(@org.glassfish.jersey.media.multipart.FormDataParam("file") InputStream uploadedInputStream,
-            @org.glassfish.jersey.media.multipart.FormDataParam("file") org.glassfish.jersey.media.multipart.FormDataContentDisposition fileDetail) {
+                                @org.glassfish.jersey.media.multipart.FormDataParam("file") org.glassfish.jersey.media.multipart.FormDataContentDisposition fileDetail) {
         // To be updated in the future if there are more mediaType to be uploaded. For now, I just use for image uploading.
         String uploadedFileLocation = propertiesRetriever.getProp("file.path.image") + fileDetail.getFileName();
         UploadHelper.writeToFile(uploadedInputStream, uploadedFileLocation);
@@ -116,10 +81,10 @@ public class FileServiceREST {
     }
 
     // In the future, I use this one to categorize file base one their extension.
-    private String getFileLocation(@org.glassfish.jersey.media.multipart.FormDataParam("file") 
-            org.glassfish.jersey.media.multipart.FormDataContentDisposition fileDetail) {
+    private String getFileLocation(@org.glassfish.jersey.media.multipart.FormDataParam("file")
+                                   org.glassfish.jersey.media.multipart.FormDataContentDisposition fileDetail) {
         com.google.common.net.MediaType typeEnum = com.google.common.net.MediaType.parse(fileDetail.getType());
-        if (typeEnum.equals(com.google.common.net.MediaType.JPEG) || 
+        if (typeEnum.equals(com.google.common.net.MediaType.JPEG) ||
                 typeEnum.equals(com.google.common.net.MediaType.PNG) ||
                 typeEnum.equals(com.google.common.net.MediaType.GIF)) {
             return propertiesRetriever.getProp("file.path.image");
@@ -127,7 +92,7 @@ public class FileServiceREST {
             return propertiesRetriever.getProp("file.path");
         }
     }
-    
+
     private class FileStreamingOutput implements StreamingOutput {
 
         private File file;

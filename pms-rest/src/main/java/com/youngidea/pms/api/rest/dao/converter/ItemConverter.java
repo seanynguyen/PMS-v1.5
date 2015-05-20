@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.youngidea.pms.api.rest.dao.impl.converter;
+package com.youngidea.pms.api.rest.dao.converter;
 
 import com.google.common.collect.Lists;
 import com.youngidea.pms.api.rest.model.request.ItemPriceRequestModel;
@@ -12,10 +12,8 @@ import com.youngidea.pms.api.rest.model.response.*;
 import com.youngidea.pms.entity.item.Item;
 import com.youngidea.pms.entity.item.ItemPrice;
 import com.youngidea.pms.entity.item.ItemStatus;
-import com.youngidea.pms.facade.GenericFacade;
 import com.youngidea.pms.facade.ItemFacade;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.util.List;
 

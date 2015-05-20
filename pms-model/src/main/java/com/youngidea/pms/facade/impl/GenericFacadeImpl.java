@@ -6,7 +6,6 @@
 package com.youngidea.pms.facade.impl;
 
 import com.youngidea.pms.entity.PMSEntity;
-import com.youngidea.pms.exception.EntityNameDuplicationException;
 import com.youngidea.pms.facade.AbstractFacade;
 import com.youngidea.pms.facade.GenericFacade;
 import org.slf4j.Logger;

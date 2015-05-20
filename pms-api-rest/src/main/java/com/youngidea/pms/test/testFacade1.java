@@ -7,19 +7,14 @@
 package com.youngidea.pms.test;
 
 
-import com.google.common.collect.Lists;
-import com.youngidea.pms.api.rest.dao.impl.converter.GenericConverter;
+import com.youngidea.pms.api.rest.dao.converter.GenericConverter;
 import com.youngidea.pms.api.rest.model.request.ItemPriceRequestModel;
 import com.youngidea.pms.api.rest.model.response.ItemPriceResponseModel;
-import com.youngidea.pms.entity.item.Category;
-import com.youngidea.pms.entity.item.Item;
 import com.youngidea.pms.entity.item.ItemPrice;
-import com.youngidea.pms.entity.item.ItemStatus;
 import com.youngidea.pms.facade.CategoryFacade;
 import com.youngidea.pms.facade.GenericFacade;
 import com.youngidea.pms.facade.ItemFacade;
 import com.youngidea.pms.facade.ItemStatusFacade;
-import org.apache.log4j.BasicConfigurator;
 import org.quartz.SchedulerException;
 
 import javax.ejb.EJB;
@@ -30,8 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

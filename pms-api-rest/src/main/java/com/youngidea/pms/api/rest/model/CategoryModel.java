@@ -8,6 +8,7 @@ package com.youngidea.pms.api.rest.model;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  *
@@ -15,9 +16,10 @@ import javax.validation.constraints.NotNull;
  */
 public class CategoryModel extends AbstractModel {
     
-    @NotNull(message="{entity.category.name.notnull}")
+    @NotNull(message="{category.name.notnull}")
     private String name;
     private String description;
+    @Pattern(regexp = "[0-9]+", message = "{model.id.pattern}")
     private Long parentId;
 
     public CategoryModel() {}

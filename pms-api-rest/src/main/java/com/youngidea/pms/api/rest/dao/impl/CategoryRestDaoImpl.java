@@ -25,7 +25,7 @@ public class CategoryRestDaoImpl extends AbstractRestDaoImpl<Category, CategoryM
 
     @PostConstruct
     private void initialize() {
-        createRootCategory();
+        categoryFacade.createRootCategory();
     }
 
     @Override
@@ -33,21 +33,11 @@ public class CategoryRestDaoImpl extends AbstractRestDaoImpl<Category, CategoryM
         return categoryFacade;
     }
 
-    @Override
-    public CategoryModel remove(Long id) {
+    public CategoryModel remove(Long id) throws Exception {
         if (!id.equals(Category.ROOT_CATEGORY_ID)) {
-
-        }
-    }
-
-    private void createRootCategory() { // should be created in some where else
-        if (categoryFacade.findRootCategory() == null) {
-            Category category = new Category();
-            category.setId(CategoryFacadeImpl.ROOT_CATEGORY_ID);
-            category.setName("Uncategoried");
-            category.setDescription("Uncategoried is the root category");
-            category.setParentCategory(null);
-            categoryFacade.create(category);
+            return super.remove(id);
+        } else {
+            throw new Exception("FUCK");
         }
     }
 

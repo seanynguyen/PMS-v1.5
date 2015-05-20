@@ -1,12 +1,9 @@
 package com.youngidea.pms.facade.impl;
 
 import com.youngidea.pms.entity.item.ItemStatus;
-import com.youngidea.pms.exception.EntityNameDuplicationException;
 import com.youngidea.pms.facade.ItemStatusFacade;
 
 import javax.ejb.Stateless;
-import javax.persistence.Query;
-import java.util.List;
 
 
 /**

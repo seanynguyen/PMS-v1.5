@@ -1,4 +1,4 @@
-package com.youngidea.pms.api.rest.dao.impl.converter;
+package com.youngidea.pms.api.rest.dao.converter;
 
 import com.google.common.collect.Lists;
 import com.youngidea.pms.api.rest.model.response.ItemStatusModel;

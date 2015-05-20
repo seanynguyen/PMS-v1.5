@@ -1,8 +1,7 @@
 package com.youngidea.pms.api.rest.dao.impl;
 
 import com.youngidea.pms.api.rest.dao.ItemStatusDao;
-import com.youngidea.pms.api.rest.dao.impl.converter.ItemStatusConverter;
-import com.youngidea.pms.api.rest.model.request.ItemRequestModel;
+import com.youngidea.pms.api.rest.dao.converter.ItemStatusConverter;
 import com.youngidea.pms.api.rest.model.response.ItemStatusModel;
 import com.youngidea.pms.entity.item.ItemStatus;
 import com.youngidea.pms.facade.GenericFacade;

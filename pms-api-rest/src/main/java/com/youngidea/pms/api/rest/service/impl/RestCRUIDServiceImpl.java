@@ -1,6 +1,7 @@
 package com.youngidea.pms.api.rest.service.impl;
 
 import com.youngidea.pms.api.rest.dao.AbstractRestDao;
+import com.youngidea.pms.api.rest.exception.ModelNameDuplicationException;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.api.rest.model.error.NotFoundError;
 import com.youngidea.pms.api.rest.service.RestCRUIDService;
@@ -21,7 +22,7 @@ public abstract class RestCRUIDServiceImpl<Dao extends AbstractRestDao, Model ex
 
     @POST
     @Consumes({"application/xml", "application/json"})
-    public Response create(@Valid Model model) {
+    public Response create(@Valid Model model) throws ModelNameDuplicationException{
         return RestApiHelper.buildResponse(Response.Status.CREATED, getDao().create(model));
     };
 

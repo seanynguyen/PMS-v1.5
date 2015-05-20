@@ -1,9 +1,7 @@
 package com.youngidea.pms.facade.impl;
 
-import com.youngidea.pms.entity.item.Category;
 import com.youngidea.pms.entity.item.Item;
 import com.youngidea.pms.entity.item.ItemPrice;
-import com.youngidea.pms.exception.EntityNameDuplicationException;
 import com.youngidea.pms.facade.CategoryFacade;
 import com.youngidea.pms.facade.ItemFacade;
 import com.youngidea.pms.facade.ItemPriceFacade;
@@ -12,8 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.Query;
-import java.util.List;
 
 /**
  * Created by sean on 3/25/15.
@@ -35,13 +31,12 @@ public class ItemFacadeImpl extends GenericFacadeImpl<Item> implements ItemFacad
 
     @Override
     public void create(Item item) {
+        // avoid sql error
         if (super.checkNameDuplication(item.getName())) {
             return;
         }
-//        System.out.println("FUCK ---------------------->" + categoryFacade.findRootCategory().getName());
-//        categoryFacade.find(Long.parseLong("1"));
-//        setRootCategoryIfNeeded(item);
-//        super.create(item);
+        setRootCategoryIfNeeded(item);
+        super.create(item);
     }
 
     // To be defined
@@ -60,22 +55,9 @@ public class ItemFacadeImpl extends GenericFacadeImpl<Item> implements ItemFacad
     }
 
     private void setRootCategoryIfNeeded(Item item) {
-        if (item.getCategory() == null || item.getCategory().getId() == null) { // work around with dozer converter framework. It's automatically create a category object
-            System.out.println("--------------------------------------------> FUCK THAT SHIT 2");
-            item.setCategory(categoryFacade.find(Long.parseLong("1")));
+        if (item.getCategory() == null) {
+            item.setCategory(categoryFacade.findRootCategory());
         }
     }
-
-//    for (ItemPrice itemPrice : itemPrices) {
-//        if (!this.itemPrices.contains(itemPrice)) {
-//            itemPrice.setItem(this);
-//        }
-//    }
-//    for (ItemPrice currentItemPrice : this.itemPrices) {
-//        if (!itemPrices.contains(currentItemPrice)) {
-//            System.out.println(currentItemPrice.getId());
-//            currentItemPrice.setItem(null);
-//        }
-//    }
 
 }

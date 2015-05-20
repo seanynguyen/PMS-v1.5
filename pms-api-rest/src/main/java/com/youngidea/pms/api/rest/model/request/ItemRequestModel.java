@@ -9,6 +9,9 @@ import com.google.common.collect.Lists;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.ws.rs.PathParam;
 import java.util.List;
 
 /**
@@ -18,15 +21,16 @@ import java.util.List;
 public class ItemRequestModel extends AbstractModel {
     private static final String DEFAULT_IMAGE_URL= "/home/sean/Pictures/15395506730_5b94003d67_m.jpg";
 
-    @NotNull(message="{entity.item.name.notnull}")
+    @NotNull(message="{model.notfound}")
+    @Size(min = 2, max = 50, message = "{item.name.size}")
     private String name;
+    @Size(min = 5, max = 2000, message = "{item.description.size}")
     private String description;
     private List<ItemPriceRequestModel> itemPrices = Lists.newArrayList();
+    @Pattern(regexp = "[0-9]+", message = "{model.id.pattern}")
     private Long categoryId;
     private String imageURL = DEFAULT_IMAGE_URL;
-    
-    
-    // Use when errors come
+
     public ItemRequestModel() {
         
     }

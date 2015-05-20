@@ -5,6 +5,7 @@
  */
 package com.youngidea.pms.api.rest.model;
 
+import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -14,6 +15,7 @@ import java.io.Serializable;
  */
 public class AbstractModel implements Serializable {
 
+    @Pattern(regexp = "[0-9]+", message = "{model.id.pattern}")
     private Long id;
 
     public AbstractModel(Long id) {

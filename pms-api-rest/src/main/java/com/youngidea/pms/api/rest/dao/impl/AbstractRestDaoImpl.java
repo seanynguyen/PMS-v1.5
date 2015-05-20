@@ -1,7 +1,8 @@
 package com.youngidea.pms.api.rest.dao.impl;
 
 import com.google.common.collect.Lists;
-import com.youngidea.pms.api.rest.dao.impl.converter.GenericConverter;
+import com.youngidea.pms.api.rest.dao.converter.GenericConverter;
+import com.youngidea.pms.api.rest.exception.ModelNameDuplicationException;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.entity.PMSEntity;
 import com.youngidea.pms.facade.AbstractFacade;
@@ -36,9 +37,10 @@ public abstract class AbstractRestDaoImpl<E extends PMSEntity, RequestModel exte
 //    }
 
 
-    public ResponseModel create(RequestModel requestModel) {
+    public ResponseModel create(RequestModel requestModel) throws ModelNameDuplicationException {
         // let the child class does some shit ...
         //...
+        System.out.println("FUCKKKKKKKKKKKKKKK");
         getFacade().create(getConverter().convertBack(requestModel, getFacade().getEntityClass()));
         return getConverter().convertResToResp(requestModel);
     };

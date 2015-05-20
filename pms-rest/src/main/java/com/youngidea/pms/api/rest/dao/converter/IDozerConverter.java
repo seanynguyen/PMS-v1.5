@@ -1,7 +1,5 @@
-package com.youngidea.pms.api.rest.dao.impl.converter;
+package com.youngidea.pms.api.rest.dao.converter;
 
-
-import com.youngidea.pms.entity.PMSEntity;
 
 /**
  * Created by sean on 3/26/15.

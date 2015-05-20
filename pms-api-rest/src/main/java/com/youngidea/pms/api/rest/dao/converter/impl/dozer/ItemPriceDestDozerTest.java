@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.youngidea.pms.api.rest.dao.impl.converter.impl.dozer;
+package com.youngidea.pms.api.rest.dao.converter.impl.dozer;
 
 import com.youngidea.pms.entity.PMSEntity;
 import com.youngidea.pms.entity.item.Item;

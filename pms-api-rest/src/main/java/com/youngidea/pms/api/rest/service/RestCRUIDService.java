@@ -1,5 +1,6 @@
 package com.youngidea.pms.api.rest.service;
 
+import com.youngidea.pms.api.rest.exception.ModelNameDuplicationException;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.api.rest.model.validator.ValidStatus;
 
@@ -15,7 +16,7 @@ import javax.ws.rs.core.Response;
 @Local
 public interface RestCRUIDService<Model extends AbstractModel> {
 
-    Response create(@Valid Model model);
+    Response create(@Valid Model model) throws ModelNameDuplicationException;
 
     Response edit(@Valid Model model, @PathParam("id") Long id);
 

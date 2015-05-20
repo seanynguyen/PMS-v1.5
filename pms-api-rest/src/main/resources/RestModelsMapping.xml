@@ -24,28 +24,17 @@
 
     <!-- Item price mapping -->
     <mapping>
-        <!-- Test -->
-        <!--<class-a>com.youngidea.pms.api.rest.dao.impl.converter.impl.dozer.ItemPriceSrcDozerTest</class-a>-->
-        <!--<class-b>com.youngidea.pms.api.rest.dao.impl.converter.impl.dozer.ItemPriceDestDozerTest</class-b>-->
         <class-a>com.youngidea.pms.api.rest.model.request.ItemPriceRequestModel</class-a>
         <class-b>com.youngidea.pms.entity.item.ItemPrice</class-b>
         <field>
-            <a>id</a>
-            <b>id</b>
-        </field>
-        <field>
             <a>statusId</a>
             <b>itemStatus.id</b>
-        </field>
-        <field>
-            <a>price</a>
-            <b>price</b>
         </field>
     </mapping>
 
     <!-- Item mapping -->
     <!-- Request -> Entity -->
-    <mapping>
+    <mapping map-null="false">
         <class-a>com.youngidea.pms.api.rest.model.request.ItemRequestModel</class-a>
         <class-b>com.youngidea.pms.entity.item.Item</class-b>
         <field>
@@ -74,6 +63,7 @@
             <b>categoryModel.parentId</b>
         </field>
     </mapping>
+
     <!-- Category mapping -->
     <mapping>
         <class-a>com.youngidea.pms.api.rest.model.CategoryModel</class-a>

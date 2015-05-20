@@ -1,4 +1,4 @@
-package com.youngidea.pms.api.rest.dao.impl.converter;
+package com.youngidea.pms.api.rest.dao.converter;
 
 /**
  * Created by sean on 3/26/15.

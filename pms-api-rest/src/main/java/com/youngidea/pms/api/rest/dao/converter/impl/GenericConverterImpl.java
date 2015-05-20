@@ -1,6 +1,6 @@
-package com.youngidea.pms.api.rest.dao.impl.converter.impl;
+package com.youngidea.pms.api.rest.dao.converter.impl;
 
-import com.youngidea.pms.api.rest.dao.impl.converter.GenericConverter;
+import com.youngidea.pms.api.rest.dao.converter.GenericConverter;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.entity.PMSEntity;
 import org.apache.log4j.BasicConfigurator;
