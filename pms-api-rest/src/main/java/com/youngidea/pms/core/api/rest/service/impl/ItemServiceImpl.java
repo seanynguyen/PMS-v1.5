@@ -1,0 +1,24 @@
+package com.youngidea.pms.core.api.rest.service.impl;
+
+import com.youngidea.pms.core.api.rest.service.ItemService;
+import com.youngidea.pms.core.api.rest.dao.ItemRestDao;
+import com.youngidea.pms.core.api.rest.model.request.ItemRequestModel;
+
+import javax.ejb.EJB;
+import javax.ws.rs.Path;
+
+/**
+ * Created by sean on 4/11/15.
+ */
+@Path("/item")
+public class ItemServiceImpl extends RestCRUIDServiceImpl<ItemRestDao, ItemRequestModel> implements ItemService {
+
+    @EJB
+    private ItemRestDao itemDao;
+
+    @Override
+    protected ItemRestDao getDao() {
+        return this.itemDao;
+    }
+
+}

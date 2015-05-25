@@ -1,0 +1,33 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.youngidea.pms.core.entity.order;
+
+import com.youngidea.pms.core.entity.Bill;
+
+import javax.persistence.*;
+
+/**
+ *
+ * @author sean
+ */
+@Entity
+@Table(name="BillingOrder")
+public class BillingOrder extends GeneralOrder{
+    
+    // OrderList or Bill
+    @JoinColumn(name = "billID", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Bill bill;
+
+    public Bill getBill() {
+        return bill;
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
+    }
+    
+}

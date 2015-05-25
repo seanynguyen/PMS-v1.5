@@ -13,9 +13,10 @@
     <!--REMEMBER, IF A MAPPING INCLUDING ID PART, ITS ID MUST BE ADDED TO THE JAVA CONVERTER AS WELL-->
 
     <!-- Item Status mapping -->
-    <mapping map-id="statusMapping">
-        <class-a>com.youngidea.pms.entity.item.ItemStatus</class-a>
-        <class-b>com.youngidea.pms.api.rest.model.ItemStatusModel</class-b>
+    <!--<mapping map-id="statusMapping">-->
+    <mapping>
+        <class-a>com.youngidea.pms.core.entity.item.ItemStatus</class-a>
+        <class-b>com.youngidea.pms.core.api.rest.model.ItemStatusModel</class-b>
         <field>
             <a>name</a>
             <b>statusName</b>
@@ -24,8 +25,8 @@
 
     <!-- Item price mapping -->
     <mapping>
-        <class-a>com.youngidea.pms.api.rest.model.request.ItemPriceRequestModel</class-a>
-        <class-b>com.youngidea.pms.entity.item.ItemPrice</class-b>
+        <class-a>ItemPriceRequestModel</class-a>
+        <class-b>com.youngidea.pms.core.entity.ItemPrice</class-b>
         <field>
             <a>statusId</a>
             <b>itemStatus.id</b>
@@ -35,8 +36,8 @@
     <!-- Item mapping -->
     <!-- Request -> Entity -->
     <mapping map-null="false">
-        <class-a>com.youngidea.pms.api.rest.model.request.ItemRequestModel</class-a>
-        <class-b>com.youngidea.pms.entity.item.Item</class-b>
+        <class-a>ItemRequestModel</class-a>
+        <class-b>com.youngidea.pms.core.entity.Item</class-b>
         <field>
             <a>categoryId</a>
             <b>category.id</b>
@@ -44,8 +45,8 @@
     </mapping>
     <!-- Entity -> Response -->
     <mapping>
-        <class-a>com.youngidea.pms.entity.item.Item</class-a>
-        <class-b>com.youngidea.pms.api.rest.model.response.ItemResponseModel</class-b>
+        <class-a>Item</class-a>
+        <class-b>ItemResponseModel</class-b>
         <field>
             <a>category.id</a>
             <b>categoryModel.id</b>
@@ -66,7 +67,18 @@
 
     <!-- Category mapping -->
     <mapping>
-        <class-a>com.youngidea.pms.api.rest.model.CategoryModel</class-a>
-        <class-b>com.youngidea.pms.entity.item.Category</class-b>
+        <class-a>com.youngidea.pms.core.api.rest.model.CategoryModel</class-a>
+        <class-b>com.youngidea.pms.core.entity.Category</class-b>
     </mapping>
+
+    <!-- BillingOrder mapping -->
+    <mapping>
+        <class-a>com.youngidea.pms.api.rest.model.request.OrderRequestModel</class-a>
+        <class-b>com.youngidea.pms.core.entity.BillingOrder</class-b>
+        <field>
+            <a>priceId</a>
+            <b>itemPrice.id</b>
+        </field>
+    </mapping>
+
 </mappings>

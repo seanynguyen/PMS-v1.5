@@ -24,6 +24,11 @@
             <artifactId>pms-model</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.youngidea</groupId>
+            <artifactId>pms-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!-- dozerBeanMapping.xml -->
         <dependency>
             <groupId>net.sf.dozer</groupId>
