@@ -19,13 +19,13 @@
 package com.youngidea.pms.api.rest.config;
 
 
+import com.youngidea.pms.api.rest.dao.converter.ItemConverter;
 import com.youngidea.pms.api.rest.exception.ModelNameDuplicationException;
+import com.youngidea.pms.api.rest.exception.mapper.ModelNameDuplicationExceptionMapper;
 import com.youngidea.pms.api.rest.service.impl.CategoryServiceImpl;
 import com.youngidea.pms.api.rest.service.impl.ItemServiceImpl;
-import com.youngidea.pms.api.rest.service.impl.ItemStatusServiceImpl2Rest;
-import com.youngidea.pms.api.rest.dao.converter.ItemConverter;
-import com.youngidea.pms.api.rest.exception.mapper.ModelNameDuplicationExceptionMapper;
 import com.youngidea.pms.api.rest.service.impl.ItemStatusServiceImpl;
+import com.youngidea.pms.api.rest.service.impl.ItemStatusServiceImpl2Rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -37,7 +37,6 @@ public class ApplicationConfig extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new java.util.HashSet<>();
         addRestResourceClasses(resources);
-        resources.add(org.glassfish.jersey.media.multipart.MultiPartFeature.class);
         return resources;
     }
 

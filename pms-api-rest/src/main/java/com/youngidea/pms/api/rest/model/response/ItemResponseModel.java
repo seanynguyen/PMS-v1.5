@@ -5,6 +5,8 @@
  */
 package com.youngidea.pms.api.rest.model.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.api.rest.model.CategoryModel;
 
@@ -19,9 +21,10 @@ public class ItemResponseModel extends AbstractModel {
     
     private String name;
     private String description;
+    @JsonProperty("itemPrices")
     private List<ItemPriceResponseModel> itemPriceResponseModels;
-//    private CategoryModel categoryModel = new CategoryModel();
     private String imageURL;
+    @JsonProperty("category")
     private CategoryModel categoryModel;
     
     // Use when errors come

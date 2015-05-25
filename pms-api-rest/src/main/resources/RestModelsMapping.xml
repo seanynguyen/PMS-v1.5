@@ -25,8 +25,8 @@
 
     <!-- Item price mapping -->
     <mapping>
-        <class-a>ItemPriceRequestModel</class-a>
-        <class-b>com.youngidea.pms.core.entity.ItemPrice</class-b>
+        <class-a>com.youngidea.pms.api.rest.model.request.ItemPriceRequestModel</class-a>
+        <class-b>com.youngidea.pms.core.entity.item.ItemPrice</class-b>
         <field>
             <a>statusId</a>
             <b>itemStatus.id</b>
@@ -36,17 +36,17 @@
     <!-- Item mapping -->
     <!-- Request -> Entity -->
     <mapping map-null="false">
-        <class-a>ItemRequestModel</class-a>
-        <class-b>com.youngidea.pms.core.entity.Item</class-b>
+        <class-a>com.youngidea.pms.api.rest.model.request.ItemRequestModel</class-a>
+        <class-b>com.youngidea.pms.core.entity.item.Item</class-b>
         <field>
             <a>categoryId</a>
             <b>category.id</b>
         </field>
     </mapping>
     <!-- Entity -> Response -->
-    <mapping>
-        <class-a>Item</class-a>
-        <class-b>ItemResponseModel</class-b>
+    <mapping map-null="false">
+        <class-a>com.youngidea.pms.core.entity.item.Item</class-a>
+        <class-b>com.youngidea.pms.api.rest.model.response.ItemResponseModel</class-b>
         <field>
             <a>category.id</a>
             <b>categoryModel.id</b>
@@ -68,13 +68,13 @@
     <!-- Category mapping -->
     <mapping>
         <class-a>com.youngidea.pms.api.rest.model.CategoryModel</class-a>
-        <class-b>com.youngidea.pms.core.entity.Category</class-b>
+        <class-b>com.youngidea.pms.core.entity.item.Category</class-b>
     </mapping>
 
     <!-- BillingOrder mapping -->
     <mapping>
-        <class-a>com.youngidea.pms.api.rest.model.request.OrderRequestModel</class-a>
-        <class-b>com.youngidea.pms.core.entity.BillingOrder</class-b>
+        <class-a>com.youngidea.pms.api.rest.model.OrderRequestModel</class-a>
+        <class-b>com.youngidea.pms.core.entity.order.BillingOrder</class-b>
         <field>
             <a>priceId</a>
             <b>itemPrice.id</b>

@@ -5,6 +5,7 @@
  */
 package com.youngidea.pms.api.rest.model.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.api.rest.model.ItemStatusModel;
 
@@ -13,7 +14,8 @@ import com.youngidea.pms.api.rest.model.ItemStatusModel;
  * @author sean
  */
 public class ItemPriceResponseModel extends AbstractModel {
-    
+
+    @JsonProperty("itemStatus")
    private ItemStatusModel itemStatusModel;
    private int price;
    

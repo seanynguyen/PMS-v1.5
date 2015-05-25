@@ -5,12 +5,15 @@
  */
 package com.youngidea.pms.api.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 
 /**
  *
  * @author sean
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AbstractModel implements Serializable {
 
 //    @Pattern(regexp = "[0-9]+", message = "{model.id.pattern}")
