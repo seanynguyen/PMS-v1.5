@@ -1,17 +1,23 @@
 package com.youngidea.pms.api.rest.service.impl;
 
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiResponse;
+import com.wordnik.swagger.annotations.ApiResponses;
 import com.youngidea.pms.api.rest.exception.ModelNameDuplicationException;
 import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.api.rest.model.error.NotFoundError;
+import com.youngidea.pms.api.rest.model.response.ItemResponseModel;
 import com.youngidea.pms.api.rest.service.RestCRUIDService;
 import com.youngidea.pms.api.rest.dao.AbstractRestDao;
 import com.youngidea.pms.api.rest.ultility.RestApiHelper;
+import com.youngidea.pms.core.entity.item.Item;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  * Created by sean on 4/4/15.
@@ -63,6 +69,11 @@ public abstract class RestCRUIDServiceImpl<Dao extends AbstractRestDao, Model ex
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @ApiOperation(value = "Say Hello World",
+            notes = "Anything Else?", response = Item.class, responseContainer="List")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 500, message = "Something wrong in Server")})
     public Response findAll() {
         return RestApiHelper.buildResponse((Response.Status.FOUND), getDao().findAll());
     };

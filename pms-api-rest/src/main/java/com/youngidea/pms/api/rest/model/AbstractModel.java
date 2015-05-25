@@ -6,6 +6,8 @@
 package com.youngidea.pms.api.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
@@ -14,6 +16,7 @@ import java.io.Serializable;
  * @author sean
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@ApiModel
 public class AbstractModel implements Serializable {
 
 //    @Pattern(regexp = "[0-9]+", message = "{model.id.pattern}")
@@ -27,6 +30,7 @@ public class AbstractModel implements Serializable {
 
     }
 
+    @ApiModelProperty(position = 1, value = "id must be a valid unsigned number")
     public Long getId() {
         return id;
     }

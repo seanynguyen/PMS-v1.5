@@ -64,5 +64,11 @@ public class ApplicationConfig extends Application {
         resources.add(ModelNameDuplicationException.class);
         resources.add(ModelNameDuplicationExceptionMapper.class);
         resources.add(org.glassfish.jersey.media.multipart.MultiPartFeature.class);
+        resources.add(RestResponseFilter.class);
+        // Swagger
+        resources.add(com.wordnik.swagger.jaxrs.listing.ApiListingResource.class);
+        resources.add(com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider.class);
+        resources.add(com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON.class);
+        resources.add(com.wordnik.swagger.jaxrs.listing.ResourceListingProvider.class);
     }
 }
