@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.youngidea.pms.core.test;
+package com.youngidea.pms.test;
 
 import com.youngidea.pms.core.service.impl.SchedulerServiceImpl;
 import org.quartz.SchedulerException;

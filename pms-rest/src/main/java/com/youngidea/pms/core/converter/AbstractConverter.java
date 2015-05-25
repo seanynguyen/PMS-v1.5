@@ -6,7 +6,7 @@
 package com.youngidea.pms.core.converter;
 
 
-import com.youngidea.pms.core.api.rest.model.AbstractModel;
+import com.youngidea.pms.api.rest.model.AbstractModel;
 import com.youngidea.pms.core.entity.PMSEntity;
 
 /**

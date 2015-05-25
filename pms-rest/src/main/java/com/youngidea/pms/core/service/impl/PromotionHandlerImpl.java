@@ -6,7 +6,7 @@
 package com.youngidea.pms.core.service.impl;
 
 import com.youngidea.pms.core.converter.OrdersConverter;
-import com.youngidea.pms.core.api.rest.model.OrderRequestModel;
+import com.youngidea.pms.api.rest.model.OrderRequestModel;
 import com.youngidea.pms.core.entity.order.RuleOrder;
 import com.youngidea.pms.core.service.PromotionHandler;
 import com.youngidea.pms.core.entity.order.DiscountOrder;

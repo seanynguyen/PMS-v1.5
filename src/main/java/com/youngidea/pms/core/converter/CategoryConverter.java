@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.youngidea.pms.core.converter;
-import com.youngidea.pms.core.api.rest.model.response.CategoryModel1;
+import com.youngidea.pms.api.rest.model.response.CategoryModel1;
 import com.youngidea.pms.core.entity.item.Category;
 
 import javax.ejb.Stateless;

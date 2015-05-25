@@ -5,7 +5,7 @@
  */
 package com.youngidea.pms.core.ultilities;
 
-import com.youngidea.pms.core.api.rest.model.OrderRequestModel;
+import com.youngidea.pms.api.rest.model.OrderRequestModel;
 
 import java.util.ArrayList;
 

@@ -5,9 +5,9 @@
  */
 package com.youngidea.pms.core.converter;
 
-import com.youngidea.pms.core.api.rest.model.OrderRequestModel;
-import com.youngidea.pms.core.api.rest.model.request.ItemGroupRequestModel;
-import com.youngidea.pms.core.api.rest.model.response.ItemGroupResponseModel;
+import com.youngidea.pms.api.rest.model.OrderRequestModel;
+import com.youngidea.pms.api.rest.model.request.ItemGroupRequestModel;
+import com.youngidea.pms.api.rest.model.response.ItemGroupResponseModel;
 import com.youngidea.pms.core.entity.item.ItemGroup;
 import com.youngidea.pms.core.entity.order.GroupedOrder;
 import com.youngidea.pms.core.facade.GenericFacade;

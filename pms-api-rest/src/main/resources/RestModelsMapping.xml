@@ -16,7 +16,7 @@
     <!--<mapping map-id="statusMapping">-->
     <mapping>
         <class-a>com.youngidea.pms.core.entity.item.ItemStatus</class-a>
-        <class-b>com.youngidea.pms.core.api.rest.model.ItemStatusModel</class-b>
+        <class-b>com.youngidea.pms.api.rest.model.ItemStatusModel</class-b>
         <field>
             <a>name</a>
             <b>statusName</b>
@@ -67,7 +67,7 @@
 
     <!-- Category mapping -->
     <mapping>
-        <class-a>com.youngidea.pms.core.api.rest.model.CategoryModel</class-a>
+        <class-a>com.youngidea.pms.api.rest.model.CategoryModel</class-a>
         <class-b>com.youngidea.pms.core.entity.Category</class-b>
     </mapping>
 

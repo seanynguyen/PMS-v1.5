@@ -7,8 +7,8 @@ package com.youngidea.pms.core.service.impl;
 
 import com.google.common.collect.Lists;
 import com.youngidea.pms.core.converter.OrdersConverter;
-import com.youngidea.pms.core.api.rest.model.OrderRequestModel;
-import com.youngidea.pms.core.api.rest.model.response.OrderResponseModel;
+import com.youngidea.pms.api.rest.model.OrderRequestModel;
+import com.youngidea.pms.api.rest.model.response.OrderResponseModel;
 import com.youngidea.pms.core.entity.item.ItemPrice;
 import com.youngidea.pms.core.entity.order.DiscountOrder;
 import com.youngidea.pms.core.entity.promotion.Promotion;

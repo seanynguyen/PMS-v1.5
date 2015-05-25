@@ -7,7 +7,7 @@ package com.youngidea.pms.core.service.impl;
 
 import com.google.common.collect.Lists;
 import com.youngidea.pms.core.converter.OrdersConverter;
-import com.youngidea.pms.core.api.rest.model.OrderRequestModel;
+import com.youngidea.pms.api.rest.model.OrderRequestModel;
 import com.youngidea.pms.core.entity.order.DiscountOrder;
 import com.youngidea.pms.core.service.BillingService;
 import com.youngidea.pms.core.ultilities.OrdersList;
@@ -17,7 +17,7 @@ import com.youngidea.pms.core.entity.promotion.Promotion;
 import com.youngidea.pms.core.entity.promotion.PromotionPrice;
 import com.youngidea.pms.core.entity.promotion.PromotionRule;
 import com.youngidea.pms.core.facade.GenericFacade;
-import com.youngidea.pms.core.api.rest.model.response.OrderResponseModel;
+import com.youngidea.pms.api.rest.model.response.OrderResponseModel;
 import com.youngidea.pms.core.service.PromotionHandler;
 
 import java.util.List;

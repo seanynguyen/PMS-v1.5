@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.youngidea.pms.core.test;
+package com.youngidea.pms.test;
 
 import javax.persistence.Column;
 import javax.persistence.Temporal;
